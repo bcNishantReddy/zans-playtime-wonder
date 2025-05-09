@@ -1,13 +1,10 @@
-
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
-
 const OurStory: React.FC = () => {
-  return (
-    <section id="story-section" className="py-16 bg-gradient-to-br from-white to-zans-lightblue/10">
+  return <section id="story-section" className="py-16 bg-gradient-to-br from-white to-zans-lightblue/10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <Badge className="mb-4 bg-zans-lightpink text-zans-pink px-4 py-1 text-sm">Our Journey</Badge>
+          <Badge className="mb-4 text-zans-pink px-4 py-1 text-sm bg-slate-950">Our Journey</Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">The ZANS Story</h2>
         </div>
         
@@ -15,11 +12,7 @@ const OurStory: React.FC = () => {
           <div className="bg-white rounded-3xl p-8 shadow-lg">
             <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
               <div className="w-full md:w-1/2">
-                <img 
-                  src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
-                  alt="ZANS Storytelling Journey" 
-                  className="rounded-2xl shadow-md w-full h-auto object-cover aspect-video"
-                />
+                <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="ZANS Storytelling Journey" className="rounded-2xl shadow-md w-full h-auto object-cover aspect-video" />
               </div>
               
               <div className="w-full md:w-1/2 prose max-w-none">
@@ -60,8 +53,6 @@ const OurStory: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default OurStory;
