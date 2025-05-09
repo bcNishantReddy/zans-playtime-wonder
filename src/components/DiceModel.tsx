@@ -18,7 +18,6 @@ const DiceModel: React.FC = () => {
       antialias: true
     });
     
-    // Increased size from 400 to 500
     renderer.setSize(500, 500);
     
     if (containerRef.current) {
@@ -26,11 +25,11 @@ const DiceModel: React.FC = () => {
       containerRef.current.appendChild(renderer.domElement);
     }
 
-    // Create dice cube with rounded edges
+    // Create dice cube with slightly curved edges
     // Using BoxGeometry with more segments for better rounding effect
-    const geometry = new THREE.BoxGeometry(1, 1, 1, 4, 4, 4);
+    const geometry = new THREE.BoxGeometry(1, 1, 1, 3, 3, 3);
     
-    // Apply vertex displacement for rounded corners
+    // Apply vertex displacement for slightly curved corners
     const positionAttribute = geometry.getAttribute('position');
     const vertex = new THREE.Vector3();
     
@@ -42,9 +41,8 @@ const DiceModel: React.FC = () => {
       const y = Math.abs(vertex.y);
       const z = Math.abs(vertex.z);
       
-      // Spherify the cube by pushing vertices toward a sphere shape
-      // Adjust the 0.08 value to control the roundness (smaller = less rounded)
-      const radius = 0.08;
+      // Reduce the radius value for less rounding - just curved edges
+      const radius = 0.04; // Reduced from 0.08 for subtler edge rounding
       const factor = 1.0 - radius * (1.0 - Math.max(Math.max(x, y), z));
       
       vertex.normalize().multiplyScalar(factor);
@@ -54,22 +52,22 @@ const DiceModel: React.FC = () => {
     // Update geometry after modifications
     geometry.computeVertexNormals();
 
-    // Load textures for each side of the dice with improved texture transformations
+    // Load textures for each side of the dice with improved texture positioning
     const textureLoader = new THREE.TextureLoader();
     
     // Helper function to create materials with better texture positioning
     const createZoomedMaterial = (imgPath) => {
       const texture = textureLoader.load(imgPath);
       
-      // Better centering and slightly zoomed out for clearer image visibility
-      texture.repeat.set(0.9, 0.9);  // Less zoom (was 0.8)
-      texture.center.set(0.5, 0.5);  // Center the texture
-      texture.offset.set(0.05, 0.05);  // Fine-tune the position (was 0.1)
+      // Better visibility of the full image
+      texture.repeat.set(0.95, 0.95);  // Less zoom for better visibility
+      texture.center.set(0.5, 0.5);    // Center the texture
+      texture.offset.set(0.025, 0.025); // Minimal offset
       
       return new THREE.MeshStandardMaterial({ 
         map: texture,
-        roughness: 0.7,  // Add some roughness for a plush toy feel
-        metalness: 0.1   // Low metalness for a soft material look
+        roughness: 0.7,
+        metalness: 0.1
       });
     };
     
@@ -85,17 +83,17 @@ const DiceModel: React.FC = () => {
     const dice = new THREE.Mesh(geometry, materials);
     scene.add(dice);
     
-    // Add lights to better highlight the rounded edges
+    // Add lights to better highlight the curved edges
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
     scene.add(ambientLight);
     
-    // Add a directional light to create soft shadows and highlight the rounded edges
+    // Add a directional light to create soft shadows and highlight the curved edges
     const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
     
-    // Bring camera closer for a larger view of the dice
-    camera.position.z = 2.2; // Was 2.5
+    // Position camera with positive z-axis value
+    camera.position.z = 2.2; 
 
     // Auto-rotation
     let autoRotate = true;
@@ -149,18 +147,17 @@ const DiceModel: React.FC = () => {
   }, [isMobile]);
   
   if (isMobile) {
-    // Fallback static image for mobile
-    return <div className="w-96 h-96 mx-auto relative">
+    // Improved mobile fallback
+    return <div className="w-full aspect-square max-w-[300px] mx-auto relative">
         <img 
           src="/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png" 
           alt="ZANS Storytelling Dice" 
-          className="w-full h-full object-contain"
+          className="w-full h-full object-contain animate-pulse-slow"
         />
       </div>;
   }
   
-  // Increased size from w-80 h-80 to w-96 h-96
-  return <div ref={containerRef} className="w-96 h-96 mx-auto cursor-pointer" style={{
+  return <div ref={containerRef} className="w-full aspect-square max-w-[500px] mx-auto cursor-pointer" style={{
     perspective: '1000px'
   }}></div>;
 };

@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
 import ProductCard from '@/components/ProductCard';
 import EducationalBenefits from '@/components/EducationalBenefits';
@@ -11,13 +12,24 @@ import Footer from '@/components/Footer';
 const Index: React.FC = () => {
   return (
     <div className="min-h-screen font-poppins">
+      {/* Navbar */}
+      <Navbar />
+      
       {/* Main content */}
       <main>
         <HeroSection />
-        <ProductCard />
-        <EducationalBenefits />
-        <OurStory />
-        <Testimonials />
+        <div id="products-section">
+          <ProductCard />
+        </div>
+        <div id="benefits-section">
+          <EducationalBenefits />
+        </div>
+        <div id="story-section">
+          <OurStory />
+        </div>
+        <div id="testimonials-section">
+          <Testimonials />
+        </div>
         <TrustSection />
       </main>
       
