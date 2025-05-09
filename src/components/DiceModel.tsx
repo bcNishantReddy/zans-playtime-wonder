@@ -18,8 +18,8 @@ const DiceModel: React.FC = () => {
       antialias: true
     });
     
-    // Set size based on device
-    const size = 500;
+    // Set size based on device - INCREASED SIZE here
+    const size = 650; // Increased from 500 to 650
     renderer.setSize(size, size);
     
     // Clear container and append renderer
@@ -152,7 +152,7 @@ const DiceModel: React.FC = () => {
   return (
     <div 
       ref={containerRef} 
-      className="w-full aspect-square max-w-[500px] mx-auto cursor-pointer"
+      className="w-full aspect-square max-w-[650px] mx-auto cursor-pointer"
       style={{ perspective: '1000px', zIndex: 20 }}
     />
   );
