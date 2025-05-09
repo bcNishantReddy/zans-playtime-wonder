@@ -18,30 +18,59 @@ const DiceModel: React.FC = () => {
       antialias: true
     });
     
-    // Increased size from 320 to 400
-    renderer.setSize(400, 400);
+    // Increased size from 400 to 500
+    renderer.setSize(500, 500);
     
     if (containerRef.current) {
       containerRef.current.innerHTML = '';
       containerRef.current.appendChild(renderer.domElement);
     }
 
-    // Create dice cube
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    // Create dice cube with rounded edges
+    // Using BoxGeometry with more segments for better rounding effect
+    const geometry = new THREE.BoxGeometry(1, 1, 1, 4, 4, 4);
+    
+    // Apply vertex displacement for rounded corners
+    const positionAttribute = geometry.getAttribute('position');
+    const vertex = new THREE.Vector3();
+    
+    for (let i = 0; i < positionAttribute.count; i++) {
+      vertex.fromBufferAttribute(positionAttribute, i);
+      
+      // Calculate normalized position (distance from center)
+      const x = Math.abs(vertex.x);
+      const y = Math.abs(vertex.y);
+      const z = Math.abs(vertex.z);
+      
+      // Spherify the cube by pushing vertices toward a sphere shape
+      // Adjust the 0.08 value to control the roundness (smaller = less rounded)
+      const radius = 0.08;
+      const factor = 1.0 - radius * (1.0 - Math.max(Math.max(x, y), z));
+      
+      vertex.normalize().multiplyScalar(factor);
+      positionAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
+    }
+    
+    // Update geometry after modifications
+    geometry.computeVertexNormals();
 
-    // Load textures for each side of the dice with texture transformations
+    // Load textures for each side of the dice with improved texture transformations
     const textureLoader = new THREE.TextureLoader();
     
-    // Helper function to create materials with texture transformation
+    // Helper function to create materials with better texture positioning
     const createZoomedMaterial = (imgPath) => {
       const texture = textureLoader.load(imgPath);
       
-      // Center the texture and zoom in
-      texture.repeat.set(0.8, 0.8);  // This zooms in the texture
-      texture.center.set(0.5, 0.5);  // This centers the texture
-      texture.offset.set(0.1, 0.1);  // Fine-tune the position
+      // Better centering and slightly zoomed out for clearer image visibility
+      texture.repeat.set(0.9, 0.9);  // Less zoom (was 0.8)
+      texture.center.set(0.5, 0.5);  // Center the texture
+      texture.offset.set(0.05, 0.05);  // Fine-tune the position (was 0.1)
       
-      return new THREE.MeshBasicMaterial({ map: texture });
+      return new THREE.MeshStandardMaterial({ 
+        map: texture,
+        roughness: 0.7,  // Add some roughness for a plush toy feel
+        metalness: 0.1   // Low metalness for a soft material look
+      });
     };
     
     const materials = [
@@ -55,7 +84,18 @@ const DiceModel: React.FC = () => {
     
     const dice = new THREE.Mesh(geometry, materials);
     scene.add(dice);
-    camera.position.z = 2.5;
+    
+    // Add lights to better highlight the rounded edges
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    scene.add(ambientLight);
+    
+    // Add a directional light to create soft shadows and highlight the rounded edges
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+    
+    // Bring camera closer for a larger view of the dice
+    camera.position.z = 2.2; // Was 2.5
 
     // Auto-rotation
     let autoRotate = true;
@@ -110,7 +150,7 @@ const DiceModel: React.FC = () => {
   
   if (isMobile) {
     // Fallback static image for mobile
-    return <div className="w-80 h-80 mx-auto relative">
+    return <div className="w-96 h-96 mx-auto relative">
         <img 
           src="/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png" 
           alt="ZANS Storytelling Dice" 
@@ -119,8 +159,8 @@ const DiceModel: React.FC = () => {
       </div>;
   }
   
-  // Increased size from w-64 h-64 to w-80 h-80
-  return <div ref={containerRef} className="w-80 h-80 mx-auto cursor-pointer" style={{
+  // Increased size from w-80 h-80 to w-96 h-96
+  return <div ref={containerRef} className="w-96 h-96 mx-auto cursor-pointer" style={{
     perspective: '1000px'
   }}></div>;
 };
