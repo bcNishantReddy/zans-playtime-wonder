@@ -11,14 +11,14 @@ const HeroSection: React.FC = () => {
 
   return (
     <section className="relative overflow-hidden py-8 md:py-16 bg-white">
-      {/* Background decorative elements - clean background */}
+      {/* Clean background with minimal decorations */}
       <div className="absolute -top-24 -left-24 w-48 h-48 bg-zans-blue/5 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-zans-blue/5 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
-          {/* 3D Dice on desktop, static image on mobile */}
-          <div className="flex justify-center items-center md:order-2 mb-8 md:mb-0 w-full md:w-1/2">
+          {/* 3D Dice with z-index to ensure it's in the foreground */}
+          <div className="flex justify-center items-center md:order-2 mb-8 md:mb-0 w-full md:w-1/2 relative z-10">
             <DiceModel />
           </div>
           

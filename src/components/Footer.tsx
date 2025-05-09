@@ -1,18 +1,28 @@
+
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
+
 const Footer: React.FC = () => {
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/917349045386', '_blank');
   };
-  return <footer className="bg-gray-50 pt-16 pb-8">
+
+  return (
+    <footer className="bg-gray-50 pt-16 pb-8">
       <div className="container mx-auto px-4">
         {/* Main content */}
         <div className="grid md:grid-cols-2 gap-12 mb-12">
           {/* Left column - Contact & CTA */}
           <div>
             <div className="mb-8">
-              <h3 className="text-2xl font-bold mb-4">ZANS</h3>
+              <div className="flex items-center mb-4">
+                <img 
+                  src="/lovable-uploads/d53ae836-3b93-4660-b442-cff017f47c91.png" 
+                  alt="ZANS Logo" 
+                  className="h-10 w-auto object-contain mr-2" 
+                />
+              </div>
               <p className="text-gray-600 mb-6 max-w-md">
                 Crafting tomorrow's thinkers through fun, engaging, and educational toys that spark creativity and joy.
               </p>
@@ -45,26 +55,25 @@ const Footer: React.FC = () => {
             </div>
           </div>
           
-          {/* Right column - Logos */}
+          {/* Right column - Trusted By Logos */}
           <div>
             <h4 className="font-medium mb-4">Trusted By</h4>
             <div className="flex flex-wrap gap-4">
               <div className="bg-white p-3 rounded-lg shadow h-16 flex items-center justify-center">
                 <div className="text-center text-xs font-medium px-4">
-                  <img src="https://ksca.gov.in/en/wp-content/themes/twentynineteen-child/images/ka-logo.png" alt="Government of Karnataka" className="h-10 object-contain" />
+                  <img src="/lovable-uploads/abaa153f-525d-4dd9-942e-f5af8aec5239.png" alt="Government of Karnataka" className="h-10 object-contain" />
                 </div>
               </div>
               <div className="bg-white p-3 rounded-lg shadow h-16 flex items-center justify-center">
                 <div className="text-center text-xs font-medium px-4">
-                  <img src="https://ktech.karnataka.gov.in/storage/logos/1662379314elevate_logo.jpg" alt="Elevate 2025" className="h-10 object-contain" />
+                  <img src="/lovable-uploads/48e647af-10f1-4937-ba61-474ed771363f.png" alt="Elevate 2024" className="h-10 object-contain" />
                 </div>
               </div>
               <div className="bg-white p-3 rounded-lg shadow h-16 flex items-center justify-center">
                 <div className="text-center text-xs font-medium px-4">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/K-Tech_Logo.jpg/1200px-K-Tech_Logo.jpg" alt="KTech" className="h-10 object-contain" />
+                  <img src="/lovable-uploads/6bead77b-dc71-4861-96b3-1e286d34f946.png" alt="KTech" className="h-10 object-contain" />
                 </div>
               </div>
-              
             </div>
           </div>
         </div>
@@ -74,6 +83,8 @@ const Footer: React.FC = () => {
           <p>&copy; {new Date().getFullYear()} ZANS Toys. All rights reserved.</p>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;

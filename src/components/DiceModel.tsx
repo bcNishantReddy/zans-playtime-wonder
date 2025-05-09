@@ -144,24 +144,16 @@ const DiceModel: React.FC = () => {
     };
   }, [isMobile]);
   
-  // Mobile view - static image instead of 3D animation
+  // Don't render anything on mobile as requested
   if (isMobile) {
-    return (
-      <div className="w-full flex items-center justify-center my-6">
-        <img 
-          src="/lovable-uploads/d53ae836-3b93-4660-b442-cff017f47c91.png" 
-          alt="ZANS Logo" 
-          className="w-48 h-48 object-contain"
-        />
-      </div>
-    );
+    return null;
   }
   
   return (
     <div 
       ref={containerRef} 
-      className="w-full aspect-square max-w-[500px] mx-auto cursor-pointer" 
-      style={{ perspective: '1000px' }}
+      className="w-full aspect-square max-w-[500px] mx-auto cursor-pointer"
+      style={{ perspective: '1000px', zIndex: 20 }}
     />
   );
 };

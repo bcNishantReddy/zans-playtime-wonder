@@ -21,12 +21,13 @@ const Navbar: React.FC = () => {
     <nav className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm py-4">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-r from-zans-pink to-zans-blue flex items-center justify-center text-white font-bold text-lg">
-              Z
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-zans-pink to-zans-blue bg-clip-text text-transparent">ZANS</span>
+          {/* Logo - now using the ZANS logo image */}
+          <div className="flex items-center">
+            <img 
+              src="/lovable-uploads/d53ae836-3b93-4660-b442-cff017f47c91.png" 
+              alt="ZANS Logo" 
+              className="h-10 w-auto object-contain" 
+            />
           </div>
           
           {/* Desktop Menu */}
