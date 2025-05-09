@@ -8,7 +8,7 @@ const DiceModel: React.FC = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
-    if (!containerRef.current) return; // Return if no container
+    if (!containerRef.current || isMobile) return; // Don't initialize Three.js on mobile
     
     // Create scene
     const scene = new THREE.Scene();
@@ -19,7 +19,7 @@ const DiceModel: React.FC = () => {
     });
     
     // Set size based on device
-    const size = isMobile ? 300 : 500;
+    const size = 500;
     renderer.setSize(size, size);
     
     // Clear container and append renderer
@@ -82,16 +82,16 @@ const DiceModel: React.FC = () => {
     scene.add(dice);
 
     // Improved lighting to make the dice brighter and clearer
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9); // Increased intensity
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
     scene.add(ambientLight);
 
     // Add brighter directional light
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8); // Increased intensity
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // Position camera with positive z-axis value
-    camera.position.z = 2.2;
+    // Position camera with positive z-axis value as requested
+    camera.position.z = 100;
 
     // Auto-rotation
     let autoRotate = true;
@@ -144,20 +144,15 @@ const DiceModel: React.FC = () => {
     };
   }, [isMobile]);
   
-  // Improved mobile fallback with image preview
+  // Mobile view - static image instead of 3D animation
   if (isMobile) {
     return (
-      <div className="w-full aspect-square max-w-[300px] mx-auto relative overflow-hidden">
-        <div className="animate-float w-full h-full flex items-center justify-center">
-          {/* Display cube as static image for mobile */}
-          <div className="w-64 h-64 relative transform rotate-12 scale-110">
-            <img 
-              src="/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png" 
-              alt="Dice" 
-              className="absolute inset-0 object-contain w-full h-full"
-            />
-          </div>
-        </div>
+      <div className="w-full flex items-center justify-center my-6">
+        <img 
+          src="/lovable-uploads/d53ae836-3b93-4660-b442-cff017f47c91.png" 
+          alt="ZANS Logo" 
+          className="w-48 h-48 object-contain"
+        />
       </div>
     );
   }

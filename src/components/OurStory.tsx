@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Badge } from "@/components/ui/badge";
 const OurStory: React.FC = () => {
@@ -12,7 +13,7 @@ const OurStory: React.FC = () => {
           <div className="bg-white rounded-3xl p-8 shadow-lg">
             <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
               <div className="w-full md:w-1/2">
-                <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="ZANS Storytelling Journey" className="rounded-2xl shadow-md w-full h-auto object-cover aspect-video" />
+                <img src="/lovable-uploads/4f8233af-64a3-4dad-ae2c-9399dbcfb3fd.png" alt="ZANS at Elevate 2024" className="rounded-2xl shadow-md w-full h-auto object-cover" />
               </div>
               
               <div className="w-full md:w-1/2 prose max-w-none">
