@@ -45,12 +45,12 @@ const DiceModel: React.FC = () => {
     };
     
     const materials = [
-      createZoomedMaterial('/lovable-uploads/fafd864b-97ef-40ef-82ba-1ee14117e0da.png'),  // Side 1
-      createZoomedMaterial('/lovable-uploads/04901a41-5973-4747-9ecb-9dfde54a02e5.png'),  // Side 2 (Scorpion)
-      createZoomedMaterial('/lovable-uploads/12bc4bcb-4fdd-43b2-8642-71b1841f53f3.png'),  // Side 3 (Airplane)
-      createZoomedMaterial('/lovable-uploads/493a61e2-a312-4862-af80-1997023506af.png'),  // Side 4 (Castle)
-      createZoomedMaterial('/lovable-uploads/78518b91-3e33-4318-8dd1-da71db71d565.png'),  // Side 5 (Dinosaur)
-      createZoomedMaterial('/lovable-uploads/04901a41-5973-4747-9ecb-9dfde54a02e5.png')   // Side 6 (using scorpion again)
+      createZoomedMaterial('/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png'),  // Spiral (purple)
+      createZoomedMaterial('/lovable-uploads/6dd6e906-d9c9-44ff-afac-b92ac8a23311.png'),  // Scorpion (purple)
+      createZoomedMaterial('/lovable-uploads/29e149c3-32db-4156-90c7-8b3ce07baa74.png'),  // Airplane (yellow)
+      createZoomedMaterial('/lovable-uploads/e51611a5-c960-4216-8dee-b69478e399ce.png'),  // Castle (pink)
+      createZoomedMaterial('/lovable-uploads/87e724dd-c150-4a33-9767-8fb6ef1ae72b.png'),  // Dinosaur (orange)
+      createZoomedMaterial('/lovable-uploads/a67b729b-291e-422f-8fca-9498c1792fcd.png')   // Footprint (green)
     ];
     
     const dice = new THREE.Mesh(geometry, materials);
@@ -112,7 +112,7 @@ const DiceModel: React.FC = () => {
     // Fallback static image for mobile
     return <div className="w-80 h-80 mx-auto relative">
         <img 
-          src="/lovable-uploads/fafd864b-97ef-40ef-82ba-1ee14117e0da.png" 
+          src="/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png" 
           alt="ZANS Storytelling Dice" 
           className="w-full h-full object-contain"
         />
