@@ -1,12 +1,15 @@
+
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
+
 const DiceModel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+  
   useEffect(() => {
-    if (isMobile) return; // Don't initialize Three.js on mobile
-
+    if (!containerRef.current) return; // Return if no container
+    
     // Create scene
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
@@ -14,14 +17,16 @@ const DiceModel: React.FC = () => {
       alpha: true,
       antialias: true
     });
-    renderer.setSize(500, 500);
-    if (containerRef.current) {
-      containerRef.current.innerHTML = '';
-      containerRef.current.appendChild(renderer.domElement);
-    }
+    
+    // Set size based on device
+    const size = isMobile ? 300 : 500;
+    renderer.setSize(size, size);
+    
+    // Clear container and append renderer
+    containerRef.current.innerHTML = '';
+    containerRef.current.appendChild(renderer.domElement);
 
     // Create dice cube with slightly curved edges
-    // Using BoxGeometry with more segments for better rounding effect
     const geometry = new THREE.BoxGeometry(1, 1, 1, 3, 3, 3);
 
     // Apply vertex displacement for slightly curved corners
@@ -35,8 +40,8 @@ const DiceModel: React.FC = () => {
       const y = Math.abs(vertex.y);
       const z = Math.abs(vertex.z);
 
-      // Reduce the radius value for less rounding - just curved edges
-      const radius = 0.04; // Reduced from 0.08 for subtler edge rounding
+      // Reduced radius value for subtler edge rounding
+      const radius = 0.04;
       const factor = 1.0 - radius * (1.0 - Math.max(Math.max(x, y), z));
       vertex.normalize().multiplyScalar(factor);
       positionAttribute.setXYZ(i, vertex.x, vertex.y, vertex.z);
@@ -45,7 +50,7 @@ const DiceModel: React.FC = () => {
     // Update geometry after modifications
     geometry.computeVertexNormals();
 
-    // Load textures for each side of the dice with improved texture positioning
+    // Load textures for each side of the dice
     const textureLoader = new THREE.TextureLoader();
 
     // Helper function to create materials with better texture positioning
@@ -53,9 +58,9 @@ const DiceModel: React.FC = () => {
       const texture = textureLoader.load(imgPath);
 
       // Better visibility of the full image
-      texture.repeat.set(0.95, 0.95); // Less zoom for better visibility
+      texture.repeat.set(0.92, 0.92); // Less zoom for better visibility
       texture.center.set(0.5, 0.5); // Center the texture
-      texture.offset.set(0.025, 0.025); // Minimal offset
+      texture.offset.set(0.04, 0.04); // Minimal offset
 
       return new THREE.MeshStandardMaterial({
         map: texture,
@@ -63,27 +68,25 @@ const DiceModel: React.FC = () => {
         metalness: 0.1
       });
     };
-    const materials = [createZoomedMaterial('/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png'),
-    // Spiral (purple)
-    createZoomedMaterial('/lovable-uploads/6dd6e906-d9c9-44ff-afac-b92ac8a23311.png'),
-    // Scorpion (purple)
-    createZoomedMaterial('/lovable-uploads/29e149c3-32db-4156-90c7-8b3ce07baa74.png'),
-    // Airplane (yellow)
-    createZoomedMaterial('/lovable-uploads/e51611a5-c960-4216-8dee-b69478e399ce.png'),
-    // Castle (pink)
-    createZoomedMaterial('/lovable-uploads/87e724dd-c150-4a33-9767-8fb6ef1ae72b.png'),
-    // Dinosaur (orange)
-    createZoomedMaterial('/lovable-uploads/a67b729b-291e-422f-8fca-9498c1792fcd.png') // Footprint (green)
+    
+    const materials = [
+      createZoomedMaterial('/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png'),
+      createZoomedMaterial('/lovable-uploads/6dd6e906-d9c9-44ff-afac-b92ac8a23311.png'),
+      createZoomedMaterial('/lovable-uploads/29e149c3-32db-4156-90c7-8b3ce07baa74.png'),
+      createZoomedMaterial('/lovable-uploads/e51611a5-c960-4216-8dee-b69478e399ce.png'),
+      createZoomedMaterial('/lovable-uploads/87e724dd-c150-4a33-9767-8fb6ef1ae72b.png'),
+      createZoomedMaterial('/lovable-uploads/a67b729b-291e-422f-8fca-9498c1792fcd.png')
     ];
+    
     const dice = new THREE.Mesh(geometry, materials);
     scene.add(dice);
 
-    // Add lights to better highlight the curved edges
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    // Improved lighting to make the dice brighter and clearer
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9); // Increased intensity
     scene.add(ambientLight);
 
-    // Add a directional light to create soft shadows and highlight the curved edges
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+    // Add brighter directional light
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8); // Increased intensity
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
@@ -140,14 +143,32 @@ const DiceModel: React.FC = () => {
       renderer.dispose();
     };
   }, [isMobile]);
+  
+  // Improved mobile fallback with image preview
   if (isMobile) {
-    // Improved mobile fallback
-    return <div className="w-full aspect-square max-w-[300px] mx-auto relative">
-        
-      </div>;
+    return (
+      <div className="w-full aspect-square max-w-[300px] mx-auto relative overflow-hidden">
+        <div className="animate-float w-full h-full flex items-center justify-center">
+          {/* Display cube as static image for mobile */}
+          <div className="w-64 h-64 relative transform rotate-12 scale-110">
+            <img 
+              src="/lovable-uploads/f57cd0fc-a889-4cd5-83df-dfd49c07e4ed.png" 
+              alt="Dice" 
+              className="absolute inset-0 object-contain w-full h-full"
+            />
+          </div>
+        </div>
+      </div>
+    );
   }
-  return <div ref={containerRef} className="w-full aspect-square max-w-[500px] mx-auto cursor-pointer" style={{
-    perspective: '1000px'
-  }}></div>;
+  
+  return (
+    <div 
+      ref={containerRef} 
+      className="w-full aspect-square max-w-[500px] mx-auto cursor-pointer" 
+      style={{ perspective: '1000px' }}
+    />
+  );
 };
+
 export default DiceModel;

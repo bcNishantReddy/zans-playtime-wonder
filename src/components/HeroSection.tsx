@@ -10,15 +10,15 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-8 md:py-16 bg-gradient-to-b from-white to-zans-lightpink/20">
-      {/* Background decorative elements */}
-      <div className="absolute -top-24 -left-24 w-48 h-48 bg-zans-pink/20 rounded-full blur-3xl"></div>
-      <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-zans-blue/20 rounded-full blur-3xl"></div>
+    <section className="relative overflow-hidden py-8 md:py-16 bg-white">
+      {/* Background decorative elements - removed pink overlay to make dice more visible */}
+      <div className="absolute -top-24 -left-24 w-48 h-48 bg-zans-blue/10 rounded-full blur-3xl"></div>
+      <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-zans-blue/10 rounded-full blur-3xl"></div>
       
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
           {/* 3D Dice - Order changes based on screen size */}
-          <div className="perspective-1000 md:order-2 mb-8 md:mb-0 w-full md:w-1/2">
+          <div className="flex justify-center items-center md:order-2 mb-8 md:mb-0 w-full md:w-1/2">
             <DiceModel />
           </div>
           

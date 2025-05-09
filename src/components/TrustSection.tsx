@@ -1,5 +1,7 @@
+
 import React from 'react';
 import { Check } from "lucide-react";
+
 const TrustSection: React.FC = () => {
   return <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -50,26 +52,26 @@ const TrustSection: React.FC = () => {
           </div>
         </div>
         
-        {/* Logos */}
+        {/* Updated Logos */}
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
           <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
             <div className="text-center">
-              <img src="https://ksca.gov.in/en/wp-content/themes/twentynineteen-child/images/ka-logo.png" alt="Government of Karnataka" className="h-16 object-contain mx-auto" />
+              <img src="/lovable-uploads/abaa153f-525d-4dd9-942e-f5af8aec5239.png" alt="Government of Karnataka" className="h-16 object-contain mx-auto" />
             </div>
           </div>
           <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
             <div className="text-center">
-              <img src="https://ktech.karnataka.gov.in/storage/logos/1662379314elevate_logo.jpg" alt="Elevate 2025" className="h-16 object-contain mx-auto" />
+              <img src="/lovable-uploads/48e647af-10f1-4937-ba61-474ed771363f.png" alt="Elevate 2024" className="h-16 object-contain mx-auto" />
             </div>
           </div>
           <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
             <div className="text-center">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/K-Tech_Logo.jpg/1200px-K-Tech_Logo.jpg" alt="KTech" className="h-16 object-contain mx-auto" />
+              <img src="/lovable-uploads/6bead77b-dc71-4861-96b3-1e286d34f946.png" alt="KTech" className="h-16 object-contain mx-auto" />
             </div>
           </div>
-          
         </div>
       </div>
     </section>;
 };
+
 export default TrustSection;
