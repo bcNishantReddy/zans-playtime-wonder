@@ -54,29 +54,41 @@ const TrustSection: React.FC = () => {
         </div>
         
         {/* Logos */}
-        <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
-          <div className="bg-white p-3 rounded-lg shadow w-32 h-20 flex items-center justify-center">
-            <div className="text-center text-xs font-medium">
-              <div className="text-2xl mb-1">🏛️</div>
-              Govt of Karnataka
+        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-12">
+          <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
+            <div className="text-center">
+              <img 
+                src="https://ksca.gov.in/en/wp-content/themes/twentynineteen-child/images/ka-logo.png" 
+                alt="Government of Karnataka" 
+                className="h-16 object-contain mx-auto"
+              />
             </div>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow w-32 h-20 flex items-center justify-center">
-            <div className="text-center text-xs font-medium">
-              <div className="text-2xl mb-1">🚀</div>
-              Elevate 2025
+          <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
+            <div className="text-center">
+              <img 
+                src="https://ktech.karnataka.gov.in/storage/logos/1662379314elevate_logo.jpg" 
+                alt="Elevate 2025" 
+                className="h-16 object-contain mx-auto"
+              />
             </div>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow w-32 h-20 flex items-center justify-center">
-            <div className="text-center text-xs font-medium">
-              <div className="text-2xl mb-1">💻</div>
-              KTech
+          <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
+            <div className="text-center">
+              <img 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/K-Tech_Logo.jpg/1200px-K-Tech_Logo.jpg" 
+                alt="KTech" 
+                className="h-16 object-contain mx-auto"
+              />
             </div>
           </div>
-          <div className="bg-white p-3 rounded-lg shadow w-32 h-20 flex items-center justify-center">
-            <div className="text-center text-xs font-medium">
-              <div className="text-2xl mb-1">✅</div>
-              100% Trust
+          <div className="bg-white p-3 rounded-lg shadow w-40 h-24 flex items-center justify-center">
+            <div className="text-center">
+              <img 
+                src="https://www.pngitem.com/pimgs/m/80-800194_transparent-verified-png-100-trusted-badge-png-png.png" 
+                alt="100% Trust" 
+                className="h-16 object-contain mx-auto"
+              />
             </div>
           </div>
         </div>

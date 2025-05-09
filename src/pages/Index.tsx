@@ -4,7 +4,8 @@ import HeroSection from '@/components/HeroSection';
 import ProductCard from '@/components/ProductCard';
 import EducationalBenefits from '@/components/EducationalBenefits';
 import TrustSection from '@/components/TrustSection';
-import RSVPForm from '@/components/RSVPForm';
+import OurStory from '@/components/OurStory';
+import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
 
 const Index: React.FC = () => {
@@ -15,8 +16,9 @@ const Index: React.FC = () => {
         <HeroSection />
         <ProductCard />
         <EducationalBenefits />
+        <OurStory />
+        <Testimonials />
         <TrustSection />
-        <RSVPForm />
       </main>
       
       {/* Footer */}
