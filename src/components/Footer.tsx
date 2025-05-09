@@ -1,15 +1,11 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import { MessageSquare, Youtube, Instagram, Facebook, Twitter } from "lucide-react";
-
 const Footer: React.FC = () => {
   const handleWhatsAppClick = () => {
     window.open('https://wa.me/917349045386', '_blank');
   };
-
-  return (
-    <footer className="bg-gray-50 pt-16 pb-8">
+  return <footer className="bg-gray-50 pt-16 pb-8">
       <div className="container mx-auto px-4">
         {/* Main content */}
         <div className="grid md:grid-cols-2 gap-12 mb-12">
@@ -17,11 +13,7 @@ const Footer: React.FC = () => {
           <div>
             <div className="mb-8">
               <div className="flex items-center mb-4">
-                <img 
-                  src="/lovable-uploads/d53ae836-3b93-4660-b442-cff017f47c91.png" 
-                  alt="ZANS Logo" 
-                  className="h-10 w-auto object-contain mr-2" 
-                />
+                <img src="/lovable-uploads/d53ae836-3b93-4660-b442-cff017f47c91.png" alt="ZANS Logo" className="h-10 w-auto object-contain mr-2" />
               </div>
               <p className="text-gray-600 mb-6 max-w-md">
                 Crafting tomorrow's thinkers through fun, engaging, and educational toys that spark creativity and joy.
@@ -57,7 +49,7 @@ const Footer: React.FC = () => {
           
           {/* Right column - Trusted By Logos */}
           <div>
-            <h4 className="font-medium mb-4">Trusted By</h4>
+            <h4 className="font-medium mb-4">Mission Believed By</h4>
             <div className="flex flex-wrap gap-4">
               <div className="bg-white p-3 rounded-lg shadow h-16 flex items-center justify-center">
                 <div className="text-center text-xs font-medium px-4">
@@ -83,8 +75,6 @@ const Footer: React.FC = () => {
           <p>&copy; {new Date().getFullYear()} ZANS Toys. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Check } from "lucide-react";
-
 const TrustSection: React.FC = () => {
   return <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
@@ -23,11 +21,11 @@ const TrustSection: React.FC = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                <p>Mentored by Dr. Phani Kumar</p>
+                <p>Mentored by ABAI & RV University</p>
               </li>
               <li className="flex items-start gap-2">
                 <Check className="h-5 w-5 text-green-500 mt-1 flex-shrink-0" />
-                <p>Elevate 2021 Grand Finale recognition</p>
+                <p>Elevate 2024 Grand Finale Winners</p>
               </li>
             </ul>
           </div>
@@ -73,5 +71,4 @@ const TrustSection: React.FC = () => {
       </div>
     </section>;
 };
-
 export default TrustSection;
