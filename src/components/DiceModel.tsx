@@ -8,7 +8,8 @@ const DiceModel: React.FC = () => {
   const isMobile = useIsMobile();
   
   useEffect(() => {
-    if (!containerRef.current || isMobile) return; // Don't initialize Three.js on mobile
+    if (!containerRef.current) return;
+    if (isMobile) return; // Don't initialize Three.js on mobile
     
     // Create scene
     const scene = new THREE.Scene();
@@ -18,8 +19,8 @@ const DiceModel: React.FC = () => {
       antialias: true
     });
     
-    // Set size based on device - INCREASED SIZE here
-    const size = 650; // Increased from 500 to 650
+    // Increased size for better visibility
+    const size = 800; // Further increased from 650 to 800
     renderer.setSize(size, size);
     
     // Clear container and append renderer
@@ -86,11 +87,11 @@ const DiceModel: React.FC = () => {
     scene.add(ambientLight);
 
     // Add brighter directional light
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 1.0);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // Position camera with positive z-axis value as requested
+    // Position camera with z-axis of 100 as requested
     camera.position.z = 100;
 
     // Auto-rotation
@@ -144,7 +145,7 @@ const DiceModel: React.FC = () => {
     };
   }, [isMobile]);
   
-  // Don't render anything on mobile as requested
+  // Don't render anything on mobile
   if (isMobile) {
     return null;
   }
@@ -152,8 +153,8 @@ const DiceModel: React.FC = () => {
   return (
     <div 
       ref={containerRef} 
-      className="w-full aspect-square max-w-[650px] mx-auto cursor-pointer"
-      style={{ perspective: '1000px', zIndex: 20 }}
+      className="w-full aspect-square max-w-[800px] mx-auto cursor-pointer"
+      style={{ perspective: '1000px', zIndex: 50 }}
     />
   );
 };

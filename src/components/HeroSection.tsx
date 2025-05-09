@@ -18,7 +18,7 @@ const HeroSection: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
           {/* 3D Dice with z-index to ensure it's in the foreground */}
-          <div className="flex justify-center items-center md:order-2 mb-8 md:mb-0 w-full md:w-1/2 lg:w-3/5 relative" style={{ zIndex: 50 }}>
+          <div className="hidden md:flex justify-center items-center md:order-2 mb-8 md:mb-0 w-full md:w-1/2 lg:w-3/5 relative" style={{ zIndex: 100 }}>
             <DiceModel />
           </div>
           
