@@ -13,15 +13,27 @@ const OurStory: React.FC = () => {
         
         <div className="max-w-4xl mx-auto">
           <div className="bg-white rounded-3xl p-8 shadow-lg">
+            <div className="flex flex-col md:flex-row gap-8 items-center mb-8">
+              <div className="w-full md:w-1/3">
+                <img 
+                  src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                  alt="ZANS Storytelling Journey" 
+                  className="rounded-2xl shadow-md w-full h-auto object-cover aspect-square"
+                />
+              </div>
+              
+              <div className="w-full md:w-2/3 prose max-w-none">
+                <p className="text-lg leading-relaxed mb-6">
+                  Once upon a time, in a world filled with digital screens and constant notifications, we dreamed of creating something different - a toy that would spark imagination, encourage bonding, and help children develop critical skills while having fun.
+                </p>
+                
+                <p className="text-lg leading-relaxed mb-6">
+                  Our founder, passionate about child development, teamed up with experts from RV University and IIT-M to design the perfect storytelling companion - a soft, colorful cube that would be safe for the smallest hands but engaging enough for growing minds.
+                </p>
+              </div>
+            </div>
+            
             <div className="prose max-w-none">
-              <p className="text-lg leading-relaxed mb-6">
-                Once upon a time, in a world filled with digital screens and constant notifications, we dreamed of creating something different - a toy that would spark imagination, encourage bonding, and help children develop critical skills while having fun.
-              </p>
-              
-              <p className="text-lg leading-relaxed mb-6">
-                Our founder, passionate about child development, teamed up with experts from RV University and IIT-M to design the perfect storytelling companion - a soft, colorful cube that would be safe for the smallest hands but engaging enough for growing minds.
-              </p>
-              
               <p className="text-lg leading-relaxed mb-6">
                 Each side of our Storytelling Dice features carefully embroidered images - a dinosaur, an airplane, a castle, a scorpion, a footprint, and a spiral - chosen specifically to trigger creativity and help children weave magical tales while developing speech and cognitive abilities.
               </p>

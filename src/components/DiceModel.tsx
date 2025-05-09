@@ -1,9 +1,12 @@
+
 import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { useIsMobile } from '@/hooks/use-mobile';
+
 const DiceModel: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const isMobile = useIsMobile();
+
   useEffect(() => {
     if (isMobile) return; // Don't initialize Three.js on mobile
 
@@ -14,7 +17,10 @@ const DiceModel: React.FC = () => {
       alpha: true,
       antialias: true
     });
-    renderer.setSize(320, 320);
+    
+    // Increased size from 320 to 400
+    renderer.setSize(400, 400);
+    
     if (containerRef.current) {
       containerRef.current.innerHTML = '';
       containerRef.current.appendChild(renderer.domElement);
@@ -23,32 +29,30 @@ const DiceModel: React.FC = () => {
     // Create dice cube
     const geometry = new THREE.BoxGeometry(1, 1, 1);
 
-    // Load textures for each side of the dice
+    // Load textures for each side of the dice with texture transformations
     const textureLoader = new THREE.TextureLoader();
-    const materials = [new THREE.MeshBasicMaterial({
-      map: textureLoader.load('/lovable-uploads/fafd864b-97ef-40ef-82ba-1ee14117e0da.png')
-    }),
-    // Scorpion
-    new THREE.MeshBasicMaterial({
-      map: textureLoader.load('/lovable-uploads/04901a41-5973-4747-9ecb-9dfde54a02e5.png')
-    }),
-    // Airplane
-    new THREE.MeshBasicMaterial({
-      map: textureLoader.load('/lovable-uploads/12bc4bcb-4fdd-43b2-8642-71b1841f53f3.png')
-    }),
-    // Castle
-    new THREE.MeshBasicMaterial({
-      map: textureLoader.load('/lovable-uploads/493a61e2-a312-4862-af80-1997023506af.png')
-    }),
-    // Dinosaur
-    new THREE.MeshBasicMaterial({
-      map: textureLoader.load('/lovable-uploads/78518b91-3e33-4318-8dd1-da71db71d565.png')
-    }),
-    // Footprint
-    new THREE.MeshBasicMaterial({
-      map: textureLoader.load('/lovable-uploads/04901a41-5973-4747-9ecb-9dfde54a02e5.png')
-    }) // Spiral (using airplane as fallback)
+    
+    // Helper function to create materials with texture transformation
+    const createZoomedMaterial = (imgPath) => {
+      const texture = textureLoader.load(imgPath);
+      
+      // Center the texture and zoom in
+      texture.repeat.set(0.8, 0.8);  // This zooms in the texture
+      texture.center.set(0.5, 0.5);  // This centers the texture
+      texture.offset.set(0.1, 0.1);  // Fine-tune the position
+      
+      return new THREE.MeshBasicMaterial({ map: texture });
+    };
+    
+    const materials = [
+      createZoomedMaterial('/lovable-uploads/fafd864b-97ef-40ef-82ba-1ee14117e0da.png'),  // Side 1
+      createZoomedMaterial('/lovable-uploads/04901a41-5973-4747-9ecb-9dfde54a02e5.png'),  // Side 2 (Scorpion)
+      createZoomedMaterial('/lovable-uploads/12bc4bcb-4fdd-43b2-8642-71b1841f53f3.png'),  // Side 3 (Airplane)
+      createZoomedMaterial('/lovable-uploads/493a61e2-a312-4862-af80-1997023506af.png'),  // Side 4 (Castle)
+      createZoomedMaterial('/lovable-uploads/78518b91-3e33-4318-8dd1-da71db71d565.png'),  // Side 5 (Dinosaur)
+      createZoomedMaterial('/lovable-uploads/04901a41-5973-4747-9ecb-9dfde54a02e5.png')   // Side 6 (using scorpion again)
     ];
+    
     const dice = new THREE.Mesh(geometry, materials);
     scene.add(dice);
     camera.position.z = 2.5;
@@ -103,14 +107,22 @@ const DiceModel: React.FC = () => {
       renderer.dispose();
     };
   }, [isMobile]);
+  
   if (isMobile) {
     // Fallback static image for mobile
-    return <div className="w-64 h-64 mx-auto relative">
-        
+    return <div className="w-80 h-80 mx-auto relative">
+        <img 
+          src="/lovable-uploads/fafd864b-97ef-40ef-82ba-1ee14117e0da.png" 
+          alt="ZANS Storytelling Dice" 
+          className="w-full h-full object-contain"
+        />
       </div>;
   }
-  return <div ref={containerRef} className="w-64 h-64 mx-auto cursor-pointer" style={{
+  
+  // Increased size from w-64 h-64 to w-80 h-80
+  return <div ref={containerRef} className="w-80 h-80 mx-auto cursor-pointer" style={{
     perspective: '1000px'
   }}></div>;
 };
+
 export default DiceModel;

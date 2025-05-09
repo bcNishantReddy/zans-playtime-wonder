@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
             <div>
               <h4 className="font-medium mb-2">Contact Us</h4>
               <p className="text-gray-600 mb-1">WhatsApp: +91 7349045386</p>
-              <p className="text-gray-600">Email: xansoffice@gmail.com</p>
+              <p className="text-gray-600">Email: zansoffice@gmail.com</p>
               
               <div className="flex gap-4 mt-4">
                 <a 
