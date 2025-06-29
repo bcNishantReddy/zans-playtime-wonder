@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
           
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button onClick={handleInterestedClick} size="sm" className="bg-zans-pink hover:bg-pink-600 text-white">
+            <Button onClick={handleInterestedClick} size="sm" className="text-white bg-sky-500 hover:bg-sky-400">
               Interested
             </Button>
             <button onClick={toggleMenu} className="p-2">
