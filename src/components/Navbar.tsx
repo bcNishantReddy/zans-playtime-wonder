@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Button } from "@/components/ui/button";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,6 +16,10 @@ const Navbar: React.FC = () => {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMenuOpen(false);
     }
+  };
+
+  const handleInterestedClick = () => {
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSfvF2hlxdkcVw1BxcJ4Y925ahhaUcYxGoPe0LToW_rD1jjq5g/viewform', '_blank');
   };
 
   return (
@@ -56,10 +61,23 @@ const Navbar: React.FC = () => {
             >
               Testimonials
             </button>
+            <Button 
+              onClick={handleInterestedClick}
+              className="bg-zans-pink hover:bg-pink-600 text-white"
+            >
+              Interested
+            </Button>
           </div>
           
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-2">
+            <Button 
+              onClick={handleInterestedClick}
+              size="sm"
+              className="bg-zans-pink hover:bg-pink-600 text-white"
+            >
+              Interested
+            </Button>
             <button onClick={toggleMenu} className="p-2">
               {isMenuOpen ? (
                 <X className="h-6 w-6 text-gray-700" />
