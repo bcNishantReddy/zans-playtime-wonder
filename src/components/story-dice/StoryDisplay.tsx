@@ -141,7 +141,7 @@ const StoryDisplay: React.FC<StoryDisplayProps> = ({ storyData, onReset, capture
               className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 backdrop-blur-sm border border-white/30 rounded-full px-4 py-2"
             >
               <span className="text-white font-medium">
-                {character.name} - {character.description}
+                {character.name}
               </span>
             </div>
           ))}
