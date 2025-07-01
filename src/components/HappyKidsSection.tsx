@@ -56,16 +56,13 @@ const HappyKidsSection: React.FC = () => {
                         alt={image.alt} 
                         className="w-full h-48 sm:h-56 md:h-64 object-contain bg-white p-2"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
-                      <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3 right-2 sm:right-3">
-                        <div className="bg-white/95 backdrop-blur-sm rounded-lg p-2 sm:p-3">
-                          <h3 className="font-bold text-sm sm:text-base text-gray-800 mb-1">{image.title}</h3>
-                          <p className="text-gray-600 text-xs sm:text-sm">"{image.description}"</p>
-                        </div>
-                      </div>
                       <div className="absolute top-2 sm:top-3 right-2 sm:right-3 text-lg sm:text-xl animate-bounce">
                         {index === 0 ? '🌟' : index === 1 ? '❤️' : '🎈'}
                       </div>
+                    </div>
+                    <div className="p-3 sm:p-4 bg-white">
+                      <h3 className="font-bold text-sm sm:text-base text-gray-800 mb-1">{image.title}</h3>
+                      <p className="text-gray-600 text-xs sm:text-sm">"{image.description}"</p>
                     </div>
                   </Card>
                 </CarouselItem>
