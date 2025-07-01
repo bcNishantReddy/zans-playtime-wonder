@@ -72,7 +72,7 @@ const HeroSection: React.FC = () => {
               <span className="bg-gradient-to-r from-blue-100 to-cyan-100 px-2 py-1 md:px-4 md:py-2 rounded-full text-blue-700 font-medium text-xs sm:text-sm">
                 🎨 Creative Learning
               </span>
-              <span className="bg-gradient-to-r from-green-100 to-emerald-100 px-2 py-1 md:px-4 md:py-2 rounded-full text-green-700 font-medium text-xs sm:text-sm">🗣dynamic speach developme</span>
+              <span className="bg-gradient-to-r from-green-100 to-emerald-100 px-2 py-1 md:px-4 md:py-2 rounded-full text-green-700 font-medium text-xs sm:text-sm">🗣dynamic speech development</span>
               <span className="bg-gradient-to-r from-orange-100 to-yellow-100 px-2 py-1 md:px-4 md:py-2 rounded-full text-orange-700 font-medium text-xs sm:text-sm">
                 👨‍👩‍👧‍👦 Family Bonding
               </span>
