@@ -37,9 +37,7 @@ export async function generateStoryFromImage(imageData: string): Promise<StoryDa
 
   try {
     // Initialize the model
-    const model = google('gemini-1.5-flash', {
-      apiKey: GOOGLE_API_KEY,
-    });
+    const model = google('gemini-1.5-flash');
 
     // Step 1: Extract characters from image
     const charactersResult = await generateObject({
