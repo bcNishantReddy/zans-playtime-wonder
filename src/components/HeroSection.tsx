@@ -14,33 +14,37 @@ const HeroSection: React.FC = () => {
       <div className="absolute -top-24 -left-24 w-48 h-48 bg-zans-blue/5 rounded-full blur-3xl"></div>
       <div className="absolute -bottom-32 -right-32 w-64 h-64 bg-zans-blue/5 rounded-full blur-3xl"></div>
       
-      {/* Floating Emojis */}
+      {/* Floating Emojis - Positioned to avoid text overlap */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Story-related emojis */}
-        <div className="absolute top-10 left-10 text-4xl animate-float" style={{ animationDelay: '0s' }}>📚</div>
-        <div className="absolute top-20 right-20 text-3xl animate-float" style={{ animationDelay: '0.5s' }}>✨</div>
-        <div className="absolute top-32 left-1/4 text-5xl animate-float" style={{ animationDelay: '1s' }}>🎲</div>
-        <div className="absolute top-40 right-1/3 text-3xl animate-float" style={{ animationDelay: '1.5s' }}>🌟</div>
-        <div className="absolute bottom-40 left-16 text-4xl animate-float" style={{ animationDelay: '2s' }}>🎭</div>
-        <div className="absolute bottom-32 right-16 text-3xl animate-float" style={{ animationDelay: '2.5s' }}>🏰</div>
-        <div className="absolute bottom-60 left-1/3 text-5xl animate-float" style={{ animationDelay: '3s' }}>🦁</div>
-        <div className="absolute top-60 right-10 text-4xl animate-float" style={{ animationDelay: '3.5s' }}>🚂</div>
-        <div className="absolute top-80 left-20 text-3xl animate-float" style={{ animationDelay: '4s' }}>🌈</div>
-        <div className="absolute bottom-20 right-1/4 text-4xl animate-float" style={{ animationDelay: '4.5s' }}>🎨</div>
-        <div className="absolute top-96 right-1/2 text-3xl animate-float" style={{ animationDelay: '5s' }}>🦄</div>
-        <div className="absolute bottom-80 left-1/2 text-4xl animate-float" style={{ animationDelay: '5.5s' }}>🎪</div>
+        {/* Top section emojis - avoiding main heading */}
+        <div className="absolute top-4 left-4 text-3xl animate-float" style={{ animationDelay: '0s' }}>📚</div>
+        <div className="absolute top-8 right-8 text-2xl animate-float" style={{ animationDelay: '0.5s' }}>✨</div>
+        <div className="absolute top-16 left-16 text-4xl animate-float" style={{ animationDelay: '1s' }}>🎲</div>
+        <div className="absolute top-12 right-24 text-2xl animate-float" style={{ animationDelay: '1.5s' }}>🌟</div>
         
-        {/* Additional scattered emojis */}
-        <div className="absolute top-16 left-1/2 text-2xl animate-float" style={{ animationDelay: '6s' }}>🌺</div>
-        <div className="absolute bottom-16 right-1/2 text-3xl animate-float" style={{ animationDelay: '6.5s' }}>🎈</div>
-        <div className="absolute top-72 left-10 text-2xl animate-float" style={{ animationDelay: '7s' }}>⭐</div>
-        <div className="absolute bottom-72 right-8 text-3xl animate-float" style={{ animationDelay: '7.5s' }}>🎊</div>
+        {/* Side emojis - avoiding center content */}
+        <div className="absolute top-1/3 left-8 text-3xl animate-float" style={{ animationDelay: '2s' }}>🎭</div>
+        <div className="absolute top-1/3 right-8 text-2xl animate-float" style={{ animationDelay: '2.5s' }}>🏰</div>
+        <div className="absolute top-1/2 left-4 text-4xl animate-float" style={{ animationDelay: '3s' }}>🦁</div>
+        <div className="absolute top-1/2 right-4 text-3xl animate-float" style={{ animationDelay: '3.5s' }}>🚂</div>
+        
+        {/* Bottom section emojis - below main content */}
+        <div className="absolute bottom-24 left-12 text-2xl animate-float" style={{ animationDelay: '4s' }}>🌈</div>
+        <div className="absolute bottom-20 right-12 text-3xl animate-float" style={{ animationDelay: '4.5s' }}>🎨</div>
+        <div className="absolute bottom-16 left-20 text-2xl animate-float" style={{ animationDelay: '5s' }}>🦄</div>
+        <div className="absolute bottom-32 right-20 text-3xl animate-float" style={{ animationDelay: '5.5s' }}>🎪</div>
+        
+        {/* Corner emojis only */}
+        <div className="absolute top-20 left-1/4 text-2xl animate-float opacity-60" style={{ animationDelay: '6s' }}>🌺</div>
+        <div className="absolute bottom-28 right-1/4 text-2xl animate-float opacity-60" style={{ animationDelay: '6.5s' }}>🎈</div>
+        <div className="absolute top-72 left-2 text-2xl animate-float opacity-50" style={{ animationDelay: '7s' }}>⭐</div>
+        <div className="absolute bottom-72 right-2 text-2xl animate-float opacity-50" style={{ animationDelay: '7.5s' }}>🎊</div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-center justify-center">
           {/* Hero Content */}
-          <div className="text-center w-full max-w-3xl mx-auto">
+          <div className="text-center w-full max-w-3xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg">
             <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r from-zans-pink to-zans-blue bg-clip-text text-transparent mb-6 leading-tight">
               🎲 Crafting Tomorrow's Thinkers Through Play! ✨
             </h1>
