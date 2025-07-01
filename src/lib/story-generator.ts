@@ -11,8 +11,8 @@ const RATE_LIMIT_MS = 2000; // 2 seconds between requests
 
 const CharacterSchema = z.object({
   characters: z.array(z.object({
-    name: z.string(),
-    description: z.string().max(100)
+    name: z.string().min(1),
+    description: z.string().min(1).max(100)
   }))
 });
 
@@ -37,7 +37,9 @@ export async function generateStoryFromImage(imageData: string): Promise<StoryDa
 
   try {
     // Initialize the model
-    const model = google('gemini-1.5-flash');
+    const model = google('gemini-1.5-flash', {
+      apiKey: GOOGLE_API_KEY
+    });
 
     // Step 1: Extract characters from image
     const charactersResult = await generateObject({
@@ -61,7 +63,11 @@ export async function generateStoryFromImage(imageData: string): Promise<StoryDa
       ]
     });
 
-    const characters = charactersResult.object.characters;
+    // Ensure characters have required properties
+    const characters: Character[] = charactersResult.object.characters.map(char => ({
+      name: char.name || 'Mystery Character',
+      description: char.description || 'A magical character ready for adventure'
+    }));
 
     // Step 2: Generate story using the characters
     const characterDescriptions = characters.map(c => `${c.name} (${c.description})`).join(', ');
