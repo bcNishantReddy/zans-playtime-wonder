@@ -3,7 +3,13 @@ import { google } from '@ai-sdk/google';
 import { generateObject, generateText } from 'ai';
 import { z } from 'zod';
 
-const GOOGLE_API_KEY = 'AIzaSyAzmUR8R2PaE-w5b1ICKq4eUDOEu82b9Xc';
+// Set the API key as environment variable
+if (typeof window === 'undefined') {
+  process.env.GOOGLE_GENERATIVE_AI_API_KEY = 'AIzaSyAzmUR8R2PaE-w5b1ICKq4eUDOEu82b9Xc';
+} else {
+  // For client-side, we'll need to handle this differently
+  (globalThis as any).GOOGLE_GENERATIVE_AI_API_KEY = 'AIzaSyAzmUR8R2PaE-w5b1ICKq4eUDOEu82b9Xc';
+}
 
 // Rate limiting
 let lastRequestTime = 0;
@@ -36,10 +42,8 @@ export async function generateStoryFromImage(imageData: string): Promise<StoryDa
   lastRequestTime = Date.now();
 
   try {
-    // Initialize the model
-    const model = google('gemini-1.5-flash', {
-      apiKey: GOOGLE_API_KEY
-    });
+    // Initialize the model without apiKey parameter
+    const model = google('gemini-1.5-flash');
 
     // Step 1: Extract characters from image
     const charactersResult = await generateObject({
