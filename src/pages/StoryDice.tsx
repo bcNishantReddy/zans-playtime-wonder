@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Camera, Upload, Sparkles, Wand2, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -27,10 +26,16 @@ const StoryDice: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
-  const handleImageCapture = (imageData: string) => {
-    setCapturedImage(imageData);
-    setShowCamera(false);
-    setStoryData(null);
+  const handleImageCapture = (file: File) => {
+    // Convert File to data URL for display
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const imageData = e.target?.result as string;
+      setCapturedImage(imageData);
+      setShowCamera(false);
+      setStoryData(null);
+    };
+    reader.readAsDataURL(file);
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -135,8 +140,7 @@ const StoryDice: React.FC = () => {
         <div className="max-w-4xl mx-auto">
           {showCamera ? (
             <CameraCapture
-              onCapture={handleImageCapture}
-              onClose={() => setShowCamera(false)}
+              onImageCapture={handleImageCapture}
             />
           ) : !capturedImage ? (
             /* Landing Page */
