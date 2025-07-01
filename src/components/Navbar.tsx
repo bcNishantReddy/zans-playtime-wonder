@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Sparkles, Camera } from 'lucide-react';
+import { Menu, X, Sparkles, Camera, Home } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 
@@ -9,16 +9,6 @@ const Navbar: React.FC = () => {
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-  };
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({
-        behavior: 'smooth'
-      });
-      setIsMenuOpen(false);
-    }
   };
 
   const handleInterestedClick = () => {
@@ -38,6 +28,10 @@ const Navbar: React.FC = () => {
           
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6">
+            <Link to="/" className="flex items-center text-gray-700 hover:text-purple-600 transition-colors font-medium">
+              <Home className="h-4 w-4 mr-1" />
+              Home
+            </Link>
             <Link to="/story-dice" className="flex items-center text-gray-700 hover:text-purple-600 transition-colors font-medium">
               <Sparkles className="h-4 w-4 mr-1" />
               Story Dice
@@ -46,12 +40,6 @@ const Navbar: React.FC = () => {
               <Camera className="h-4 w-4 mr-1" />
               Gallery
             </Link>
-            <button onClick={() => scrollToSection('products-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
-              Products
-            </button>
-            <button onClick={() => scrollToSection('story-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
-              Our Story
-            </button>
             <Button onClick={handleInterestedClick} className="text-white bg-sky-500 hover:bg-sky-400">
               Interested
             </Button>
@@ -72,20 +60,18 @@ const Navbar: React.FC = () => {
         {isMenuOpen && (
           <div className="md:hidden mt-4 py-2 rounded-lg bg-white shadow">
             <div className="flex flex-col space-y-3 px-4 py-2">
-              <Link to="/story-dice" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium">
+              <Link to="/" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
+                <Home className="h-4 w-4 mr-2" />
+                Home
+              </Link>
+              <Link to="/story-dice" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
                 <Sparkles className="h-4 w-4 mr-2" />
                 Story Dice
               </Link>
-              <Link to="/gallery" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium">
+              <Link to="/gallery" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium" onClick={() => setIsMenuOpen(false)}>
                 <Camera className="h-4 w-4 mr-2" />
                 Gallery
               </Link>
-              <button onClick={() => scrollToSection('products-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
-                Products
-              </button>
-              <button onClick={() => scrollToSection('story-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
-                Our Story
-              </button>
             </div>
           </div>
         )}
