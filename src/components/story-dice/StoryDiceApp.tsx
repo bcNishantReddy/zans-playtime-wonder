@@ -8,8 +8,13 @@ import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateObject, streamText } from 'ai';
 import { z } from 'zod';
 
+interface Character {
+  name: string;
+  description: string;
+}
+
 interface StoryData {
-  characters: string[];
+  characters: Character[];
   story: string;
 }
 
@@ -130,8 +135,14 @@ const StoryDiceApp: React.FC = () => {
         ]
       });
 
-      const characters = analysisResult.object.characters || ['a brave knight', 'a flying unicorn', 'a mysterious cave'];
-      console.log('Extracted characters:', characters);
+      const characterNames = analysisResult.object.characters || ['a brave knight', 'a flying unicorn', 'a mysterious cave'];
+      console.log('Extracted characters:', characterNames);
+
+      // Convert character names to Character objects
+      const characters: Character[] = characterNames.map(name => ({
+        name: name,
+        description: name
+      }));
 
       setStoryData({ characters, story: '' });
       setIsAnalyzing(false);
@@ -139,7 +150,7 @@ const StoryDiceApp: React.FC = () => {
 
       const storyStream = await streamText({
         model: gemini,
-        prompt: `You are a friendly AI story weaver for children. Using these 3 elements: ${characters.join(', ')}, write a magical story for children aged 5–10. The story should be 3–5 paragraphs long, lighthearted, fun, and imaginative. Make sure the characters have names and go on an adventure together. Keep the story family-friendly and appropriate for young children. Return only the story text, no title or introduction. Maximum 800 words.`
+        prompt: `You are a friendly AI story weaver for children. Using these 3 elements: ${characterNames.join(', ')}, write a magical story for children aged 5–10. The story should be 3–5 paragraphs long, lighthearted, fun, and imaginative. Make sure the characters have names and go on an adventure together. Keep the story family-friendly and appropriate for young children. Return only the story text, no title or introduction. Maximum 800 words.`
       });
 
       let generatedStory = '';
@@ -165,7 +176,7 @@ const StoryDiceApp: React.FC = () => {
     }
   }, [imageFile, toast, apiKey]);
 
-  const handleNewPicture = useCallback(() => {
+  const handleReset = useCallback(() => {
     setCapturedImage(null);
     setImageFile(null);
     setStoryData(null);
@@ -252,9 +263,9 @@ const StoryDiceApp: React.FC = () => {
         ) : (
           <div className="bg-white/15 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-8 border border-white/30 shadow-2xl">
             <StoryDisplay 
-              story={storyData.story}
-              characters={storyData.characters}
-              onNewPicture={handleNewPicture}
+              storyData={storyData}
+              onReset={handleReset}
+              capturedImage={capturedImage || ''}
             />
           </div>
         )}
