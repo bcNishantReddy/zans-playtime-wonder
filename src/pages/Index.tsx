@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -8,6 +7,7 @@ import TrustSection from '@/components/TrustSection';
 import OurStory from '@/components/OurStory';
 import Testimonials from '@/components/Testimonials';
 import Footer from '@/components/Footer';
+import HappyKidsSection from '@/components/HappyKidsSection';
 
 const Index: React.FC = () => {
   return (
@@ -21,6 +21,7 @@ const Index: React.FC = () => {
         <div id="products-section">
           <ProductCard />
         </div>
+        <HappyKidsSection />
         <div id="benefits-section">
           <EducationalBenefits />
         </div>
