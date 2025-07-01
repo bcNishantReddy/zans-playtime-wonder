@@ -49,14 +49,8 @@ const Navbar: React.FC = () => {
             <button onClick={() => scrollToSection('products-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
               Products
             </button>
-            <button onClick={() => scrollToSection('benefits-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
-              Benefits
-            </button>
             <button onClick={() => scrollToSection('story-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
               Our Story
-            </button>
-            <button onClick={() => scrollToSection('testimonials-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
-              Testimonials
             </button>
             <Button onClick={handleInterestedClick} className="text-white bg-sky-500 hover:bg-sky-400">
               Interested
@@ -89,14 +83,8 @@ const Navbar: React.FC = () => {
               <button onClick={() => scrollToSection('products-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
                 Products
               </button>
-              <button onClick={() => scrollToSection('benefits-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
-                Benefits
-              </button>
               <button onClick={() => scrollToSection('story-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
                 Our Story
-              </button>
-              <button onClick={() => scrollToSection('testimonials-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
-                Testimonials
               </button>
             </div>
           </div>

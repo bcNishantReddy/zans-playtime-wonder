@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -102,13 +101,10 @@ const Gallery: React.FC = () => {
                         alt={image.alt} 
                         className="w-full h-64 md:h-80 object-cover"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                      <div className="absolute bottom-4 left-4 right-4">
-                        <div className="bg-white/95 backdrop-blur-sm rounded-lg p-4">
-                          <h3 className="font-bold text-lg text-gray-800 mb-2">{image.title}</h3>
-                          <p className="text-gray-600 text-sm">"{image.description}"</p>
-                        </div>
-                      </div>
+                    </div>
+                    <div className="p-4 bg-white">
+                      <h3 className="font-bold text-lg text-gray-800 mb-2">{image.title}</h3>
+                      <p className="text-gray-600 text-sm">"{image.description}"</p>
                     </div>
                   </Card>
                 </CarouselItem>
