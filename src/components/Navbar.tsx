@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, X, Sparkles, Camera } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Link } from 'react-router-dom';
 
@@ -42,6 +42,10 @@ const Navbar: React.FC = () => {
               <Sparkles className="h-4 w-4 mr-1" />
               Story Dice
             </Link>
+            <Link to="/gallery" className="flex items-center text-gray-700 hover:text-purple-600 transition-colors font-medium">
+              <Camera className="h-4 w-4 mr-1" />
+              Gallery
+            </Link>
             <button onClick={() => scrollToSection('products-section')} className="text-gray-700 hover:text-zans-pink transition-colors">
               Products
             </button>
@@ -77,6 +81,10 @@ const Navbar: React.FC = () => {
               <Link to="/story-dice" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium">
                 <Sparkles className="h-4 w-4 mr-2" />
                 Story Dice
+              </Link>
+              <Link to="/gallery" className="flex items-center py-2 text-gray-700 hover:text-purple-600 transition-colors font-medium">
+                <Camera className="h-4 w-4 mr-2" />
+                Gallery
               </Link>
               <button onClick={() => scrollToSection('products-section')} className="text-left py-2 text-gray-700 hover:text-zans-pink transition-colors">
                 Products
