@@ -7,6 +7,7 @@ import StoryDisplay from './StoryDisplay';
 import { createGoogleGenerativeAI } from '@ai-sdk/google';
 import { generateObject, streamText } from 'ai';
 import { z } from 'zod';
+import { Camera, Sparkles, Wand2, Book, ArrowDown } from 'lucide-react';
 
 interface Character {
   name: string;
@@ -188,49 +189,52 @@ const StoryDiceApp: React.FC = () => {
   const isLoading = isAnalyzing || isGeneratingStory;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 p-3 sm:p-6 relative overflow-hidden">
-      {/* Enhanced Floating Bubbles */}
+    <div className="min-h-screen bg-gradient-to-br from-shiny-blue-50 via-white to-shiny-blue-100 relative overflow-hidden">
+      {/* Animated Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-[10%] left-[10%] w-8 h-8 sm:w-16 sm:h-16 md:w-24 md:h-24 bg-white/10 rounded-full animate-pulse blur-sm"></div>
-        <div className="absolute top-[20%] right-[15%] w-4 h-4 sm:w-8 sm:h-8 md:w-12 md:h-12 bg-yellow-300/20 rounded-full animate-bounce blur-sm"></div>
-        <div className="absolute top-[60%] left-[5%] w-6 h-6 sm:w-12 sm:h-12 md:w-20 md:h-20 bg-pink-300/15 rounded-full animate-pulse blur-sm delay-500"></div>
-        <div className="absolute bottom-[20%] right-[20%] w-10 h-10 sm:w-20 sm:h-20 md:w-32 md:h-32 bg-blue-300/10 rounded-full animate-bounce blur-sm delay-1000"></div>
-        <div className="absolute top-[40%] right-[5%] w-3 h-3 sm:w-6 sm:h-6 md:w-10 md:h-10 bg-green-300/20 rounded-full animate-pulse blur-sm delay-300"></div>
-        <div className="absolute bottom-[40%] left-[15%] w-7 h-7 sm:w-14 sm:h-14 md:w-28 md:h-28 bg-purple-300/15 rounded-full animate-bounce blur-sm delay-700"></div>
+        <div className="absolute top-[15%] left-[10%] w-32 h-32 bg-shiny-blue-200/20 rounded-full blur-3xl animate-float"></div>
+        <div className="absolute top-[60%] right-[15%] w-40 h-40 bg-shiny-blue-300/15 rounded-full blur-3xl animate-float" style={{animationDelay: '2s'}}></div>
+        <div className="absolute bottom-[30%] left-[20%] w-24 h-24 bg-shiny-blue-400/10 rounded-full blur-3xl animate-float" style={{animationDelay: '4s'}}></div>
+        <div className="absolute top-[40%] right-[5%] w-28 h-28 bg-shiny-blue-500/10 rounded-full blur-3xl animate-float" style={{animationDelay: '6s'}}></div>
       </div>
 
-      <div className="max-w-4xl mx-auto space-y-4 sm:space-y-6 md:space-y-8 relative z-10">
-        {/* Mobile-Optimized Header */}
-        <div className="text-center space-y-3 sm:space-y-4 md:space-y-6 py-4 sm:py-6 md:py-8">
-          <div className="relative">
-            <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black bg-gradient-to-r from-white via-yellow-200 to-white bg-clip-text text-transparent drop-shadow-2xl leading-tight px-2">
-              🎲 ZANS Story Dice ✨
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative z-10">
+        {/* Header */}
+        <div className="text-center mb-16 animate-fade-in">
+          <div className="relative inline-block mb-8">
+            <Sparkles className="absolute -top-4 -left-4 w-8 h-8 text-shiny-blue-500 animate-pulse" />
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-shiny-blue-600 via-shiny-blue-700 to-shiny-blue-800 bg-clip-text text-transparent mb-6 leading-tight">
+              ZANS Story Dice
             </h1>
-            <div className="absolute -top-1 -left-1 sm:-top-2 sm:-left-2 md:-top-4 md:-left-4 w-4 h-4 sm:w-8 sm:h-8 md:w-16 md:h-16 bg-yellow-300/70 rounded-full animate-pulse blur-sm"></div>
-            <div className="absolute -bottom-1 -right-2 sm:-bottom-2 sm:-right-3 md:-bottom-2 md:-right-6 w-3 h-3 sm:w-6 sm:h-6 md:w-12 md:h-12 bg-pink-300/60 rounded-full animate-pulse delay-1000 blur-sm"></div>
+            <Wand2 className="absolute -bottom-4 -right-4 w-8 h-8 text-shiny-blue-500 animate-pulse" style={{animationDelay: '1s'}} />
           </div>
-          <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-white font-bold max-w-3xl mx-auto leading-relaxed px-4">
-            📸 Take a photo of your story dice and watch AI create 
-            <span className="text-yellow-200"> magical adventures </span>
-            just for you! ✨
+          
+          <p className="text-xl sm:text-2xl text-slate-600 font-medium mb-8 max-w-4xl mx-auto leading-relaxed">
+            Capture your story dice and watch AI create magical adventures just for you
           </p>
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 text-xs sm:text-sm md:text-lg px-4">
-            <span className="bg-white/20 backdrop-blur-lg px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-2 rounded-full text-white font-semibold border border-white/30 shadow-lg">
-              📷 Capture
-            </span>
-            <span className="bg-white/20 backdrop-blur-lg px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-2 rounded-full text-white font-semibold border border-white/30 shadow-lg">
-              🤖 AI Magic
-            </span>
-            <span className="bg-white/20 backdrop-blur-lg px-2 py-1 sm:px-3 sm:py-2 md:px-4 md:py-2 rounded-full text-white font-semibold border border-white/30 shadow-lg">
-              📚 Story Time
-            </span>
+          
+          <div className="flex flex-wrap justify-center gap-6 text-sm font-medium">
+            <div className="flex items-center gap-2 text-slate-700">
+              <Camera className="w-5 h-5 text-shiny-blue-500" />
+              <span>Capture</span>
+            </div>
+            <ArrowDown className="w-5 h-5 text-slate-400" />
+            <div className="flex items-center gap-2 text-slate-700">
+              <Sparkles className="w-5 h-5 text-shiny-blue-500" />
+              <span>AI Magic</span>
+            </div>
+            <ArrowDown className="w-5 h-5 text-slate-400" />
+            <div className="flex items-center gap-2 text-slate-700">
+              <Book className="w-5 h-5 text-shiny-blue-500" />
+              <span>Story Time</span>
+            </div>
           </div>
         </div>
 
         {/* Main Content */}
         {!storyData ? (
-          <div className="space-y-4 sm:space-y-6 md:space-y-8">
-            <div className="bg-white/15 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-8 border border-white/30 shadow-2xl">
+          <div className="space-y-12 animate-fade-in" style={{animationDelay: '0.3s'}}>
+            <div className="backdrop-blur-sm bg-white/70 rounded-3xl p-8 shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500">
               <CameraCapture 
                 onImageCapture={handleImageCapture}
                 capturedImage={capturedImage}
@@ -238,22 +242,25 @@ const StoryDiceApp: React.FC = () => {
             </div>
             
             {capturedImage && (
-              <div className="text-center px-4">
+              <div className="text-center animate-fade-in" style={{animationDelay: '0.6s'}}>
                 <Button
                   onClick={analyzeImageAndGenerateStory}
                   disabled={isLoading}
-                  className="w-full sm:w-auto h-12 sm:h-16 md:h-20 px-4 sm:px-6 md:px-12 text-sm sm:text-lg md:text-2xl font-black bg-gradient-to-r from-emerald-400 via-cyan-400 to-blue-500 hover:from-emerald-500 hover:via-cyan-500 hover:to-blue-600 text-white rounded-xl sm:rounded-2xl md:rounded-3xl shadow-2xl transform transition-all duration-300 hover:scale-105 hover:shadow-3xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border-2 border-white/30"
+                  className="group relative overflow-hidden bg-gradient-to-r from-shiny-blue-500 via-shiny-blue-600 to-shiny-blue-700 hover:from-shiny-blue-600 hover:via-shiny-blue-700 hover:to-shiny-blue-800 text-white px-12 py-6 rounded-2xl shadow-xl transform transition-all duration-300 hover:scale-105 hover:shadow-2xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none border border-shiny-blue-400/50 text-lg font-semibold"
                 >
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                   {isLoading ? (
-                    <span className="flex items-center justify-center gap-2 sm:gap-3">
-                      <div className="w-4 h-4 sm:w-6 sm:h-6 md:w-8 md:h-8 border-2 sm:border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-                      <span className="text-xs sm:text-sm md:text-base">
-                        {isAnalyzing ? '🔍 Analyzing Dice...' : '✍️ Creating Story...'}
+                    <span className="flex items-center justify-center gap-3 relative z-10">
+                      <div className="w-6 h-6 border-3 border-white border-t-transparent rounded-full animate-spin"></div>
+                      <span>
+                        {isAnalyzing ? 'Analyzing Dice...' : 'Creating Story...'}
                       </span>
                     </span>
                   ) : (
-                    <span className="flex items-center justify-center gap-2">
-                      ✨ Generate Magical Story ✨
+                    <span className="flex items-center justify-center gap-3 relative z-10">
+                      <Sparkles className="w-6 h-6" />
+                      Generate Magical Story
+                      <Wand2 className="w-6 h-6" />
                     </span>
                   )}
                 </Button>
@@ -261,7 +268,7 @@ const StoryDiceApp: React.FC = () => {
             )}
           </div>
         ) : (
-          <div className="bg-white/15 backdrop-blur-xl rounded-xl sm:rounded-2xl md:rounded-3xl p-3 sm:p-4 md:p-8 border border-white/30 shadow-2xl">
+          <div className="animate-fade-in backdrop-blur-sm bg-white/70 rounded-3xl p-8 shadow-2xl border border-white/50">
             <StoryDisplay 
               storyData={storyData}
               onReset={handleReset}
