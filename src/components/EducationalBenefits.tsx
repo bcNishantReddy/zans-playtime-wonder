@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Palette, BookOpen, Heart, Monitor } from "lucide-react";
+import { Palette, BookOpen, Heart, Monitor, Sparkles } from "lucide-react";
 
 const EducationalBenefits: React.FC = () => {
   const benefits = [
