@@ -14,7 +14,7 @@ import Footer from '@/components/Footer';
 
 const Index: React.FC = () => {
   return (
-    <div className="min-h-screen font-poppins bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50">
+    <div className="min-h-screen font-inter bg-gradient-to-br from-background via-muted/10 to-accent/5">
       {/* Navbar */}
       <Navbar />
       
