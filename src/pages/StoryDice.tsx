@@ -6,11 +6,13 @@ import StoryDiceApp from '@/components/story-dice/StoryDiceApp';
 
 const StoryDice: React.FC = () => {
   return (
-    <div className="min-h-screen font-poppins">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-accent/5">
       <Navbar />
-      <ErrorBoundary>
-        <StoryDiceApp />
-      </ErrorBoundary>
+      <div className="pt-20">
+        <ErrorBoundary>
+          <StoryDiceApp />
+        </ErrorBoundary>
+      </div>
     </div>
   );
 };

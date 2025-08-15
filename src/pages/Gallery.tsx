@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -63,16 +64,16 @@ const Gallery: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-orange-50">
+    <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-accent/5">
       <Navbar />
       
       {/* Hero Section */}
-      <section className="py-8 md:py-16 bg-gradient-to-r from-purple-600 to-pink-600">
+      <section className="py-8 md:py-16 bg-gradient-to-r from-primary to-accent">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
-            📸 Kids & Stories Gallery 🌟
+          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 font-heading">
+            Kids & Stories Gallery
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-medium">
             Witness the joy, creativity, and learning that happens when children discover the magic of storytelling dice!
           </p>
         </div>
@@ -82,10 +83,10 @@ const Gallery: React.FC = () => {
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent">
-              🎭 Featured Moments
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent font-heading">
+              Featured Moments
             </h2>
-            <p className="text-gray-700 text-sm md:text-base">
+            <p className="text-slate-600 text-sm md:text-base font-medium">
               Swipe through these beautiful moments of children engaged in creative storytelling
             </p>
           </div>
@@ -94,7 +95,7 @@ const Gallery: React.FC = () => {
             <CarouselContent className="-ml-2 md:-ml-4">
               {galleryImages.slice(0, 4).map((image, index) => (
                 <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2">
-                  <Card className="overflow-hidden shadow-xl rounded-xl transform hover:scale-105 transition-all duration-300 border-0 h-full">
+                  <Card className="overflow-hidden shadow-xl rounded-xl transform hover:scale-105 transition-all duration-300 border-0 h-full glass-card">
                     <div className="relative">
                       <img 
                         src={image.src} 
@@ -102,16 +103,16 @@ const Gallery: React.FC = () => {
                         className="w-full h-64 md:h-80 object-cover"
                       />
                     </div>
-                    <div className="p-4 bg-white">
-                      <h3 className="font-bold text-lg text-gray-800 mb-2">{image.title}</h3>
-                      <p className="text-gray-600 text-sm">"{image.description}"</p>
+                    <div className="p-4 bg-white/80 backdrop-blur-sm">
+                      <h3 className="font-bold text-lg text-slate-800 mb-2 font-heading">{image.title}</h3>
+                      <p className="text-slate-600 text-sm font-medium">"{image.description}"</p>
                     </div>
                   </Card>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="hidden md:flex -left-12" />
-            <CarouselNext className="hidden md:flex -right-12" />
+            <CarouselPrevious className="hidden md:flex -left-12 glass-card" />
+            <CarouselNext className="hidden md:flex -right-12 glass-card" />
           </Carousel>
         </div>
       </section>
@@ -120,17 +121,17 @@ const Gallery: React.FC = () => {
       <section className="py-8 md:py-12">
         <div className="container mx-auto px-4">
           <div className="text-center mb-8">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-              🖼️ Complete Gallery
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r from-secondary to-primary bg-clip-text text-transparent font-heading">
+              Complete Gallery
             </h2>
-            <p className="text-gray-700 text-sm md:text-base">
+            <p className="text-slate-600 text-sm md:text-base font-medium">
               Explore all the wonderful moments captured during storytelling sessions
             </p>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
             {galleryImages.map((image, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg rounded-xl transform hover:scale-105 transition-all duration-300 border-0 group">
+              <Card key={index} className="overflow-hidden shadow-lg rounded-xl transform hover:scale-105 transition-all duration-300 border-0 group glass-card">
                 <div className="relative">
                   <img 
                     src={image.src} 
@@ -139,11 +140,8 @@ const Gallery: React.FC = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <h3 className="font-bold text-sm md:text-base mb-1">{image.title}</h3>
-                    <p className="text-xs md:text-sm text-gray-200">{image.description}</p>
-                  </div>
-                  <div className="absolute top-3 right-3 text-2xl animate-bounce">
-                    {index % 4 === 0 ? '🌟' : index % 4 === 1 ? '❤️' : index % 4 === 2 ? '🎈' : '✨'}
+                    <h3 className="font-bold text-sm md:text-base mb-1 font-heading">{image.title}</h3>
+                    <p className="text-xs md:text-sm text-gray-200 font-medium">{image.description}</p>
                   </div>
                 </div>
               </Card>
@@ -153,19 +151,19 @@ const Gallery: React.FC = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="py-8 md:py-12 bg-gradient-to-r from-green-500 to-blue-500">
+      <section className="py-8 md:py-12 bg-gradient-to-r from-accent to-secondary">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-            🎲 Ready to Create Your Own Stories? 
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4 font-heading">
+            Ready to Create Your Own Stories?
           </h2>
-          <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto font-medium">
             Join thousands of happy families who have discovered the joy of storytelling with our dice!
           </p>
           <button 
             onClick={() => window.open('https://wa.me/917349045386', '_blank')}
-            className="bg-white text-green-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transform hover:scale-105 transition-all shadow-lg"
+            className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transform hover:scale-105 transition-all shadow-lg"
           >
-            🛒 Order Your Set Today!
+            Order Your Set Today!
           </button>
         </div>
       </section>
