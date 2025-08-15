@@ -28,13 +28,13 @@ const ProductShowcase: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 relative overflow-hidden bg-gradient-to-r from-shiny-blue-50/30 via-white to-shiny-blue-50/30">
+    <section className="py-24 relative overflow-hidden bg-gradient-to-r from-primary/5 via-background to-primary/5">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-shiny-blue-700 to-shiny-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 text-foreground">
             Product Gallery
           </h2>
-          <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
+          <p className="text-2xl text-muted-foreground max-w-3xl mx-auto font-medium">
             See our beautiful storytelling dice in action
           </p>
         </div>
@@ -46,7 +46,7 @@ const ProductShowcase: React.FC = () => {
                 <CarouselItem key={index} className="pl-6 md:basis-1/2 lg:basis-1/3">
                   <div className="relative group animate-slide-up" style={{animationDelay: `${index * 0.2}s`}}>
                     {/* Image Container */}
-                    <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500 bg-white">
+                    <div className="relative overflow-hidden rounded-2xl shadow-2xl group-hover:shadow-3xl transition-all duration-500 bg-card">
                       <img 
                         src={image.src} 
                         alt={image.caption}
@@ -54,17 +54,17 @@ const ProductShowcase: React.FC = () => {
                       />
                       
                       {/* Overlay Caption */}
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-shiny-blue-900/80 to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                        <h3 className="text-white font-bold text-xl mb-2">{image.caption}</h3>
-                        <p className="text-white/90 text-sm">{image.description}</p>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-foreground/80 to-transparent p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <h3 className="text-background font-bold text-xl mb-2">{image.caption}</h3>
+                        <p className="text-background/90 text-sm">{image.description}</p>
                       </div>
                     </div>
                   </div>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious className="bg-white/90 hover:bg-white border-shiny-blue-200 shadow-lg hover:shadow-xl -left-6" />
-            <CarouselNext className="bg-white/90 hover:bg-white border-shiny-blue-200 shadow-lg hover:shadow-xl -right-6" />
+            <CarouselPrevious className="bg-card/90 hover:bg-card border-border shadow-lg hover:shadow-xl -left-6" />
+            <CarouselNext className="bg-card/90 hover:bg-card border-border shadow-lg hover:shadow-xl -right-6" />
           </Carousel>
         </div>
       </div>

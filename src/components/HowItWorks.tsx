@@ -28,13 +28,13 @@ const HowItWorks: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 relative bg-gradient-to-b from-white via-shiny-blue-50/20 to-white">
+    <section className="py-24 relative bg-gradient-to-b from-background via-primary/5 to-background">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-shiny-blue-700 to-shiny-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 text-foreground">
             How It Works
           </h2>
-          <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
+          <p className="text-2xl text-muted-foreground max-w-3xl mx-auto font-medium">
             Three simple steps to unlock endless creativity and learning
           </p>
         </div>
@@ -43,14 +43,14 @@ const HowItWorks: React.FC = () => {
           {steps.map((step, index) => (
             <div key={index} className="relative group animate-slide-up" style={{animationDelay: `${index * 0.2}s`}}>
               {/* Step Number */}
-              <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-r from-shiny-blue-600 to-shiny-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-2xl z-10 group-hover:scale-110 transition-transform">
+              <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-r from-primary to-primary/80 rounded-full flex items-center justify-center text-primary-foreground font-bold text-xl shadow-2xl z-10 group-hover:scale-110 transition-transform">
                 {step.number}
               </div>
               
               {/* Content Container */}
               <div className="relative pt-8 text-center group-hover:transform group-hover:scale-105 transition-all duration-500">
                 {/* Icon */}
-                <div className="text-shiny-blue-600 mb-8 flex justify-center animate-float" style={{animationDelay: `${index * 0.5}s`}}>
+                <div className="text-primary mb-8 flex justify-center animate-float" style={{animationDelay: `${index * 0.5}s`}}>
                   {step.icon}
                 </div>
                 
@@ -59,13 +59,13 @@ const HowItWorks: React.FC = () => {
                   <img 
                     src={step.image} 
                     alt={step.title}
-                    className="w-full h-64 object-contain bg-white p-6 group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-64 object-contain bg-card p-6 group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
                 
                 {/* Text Content */}
-                <h3 className="text-3xl font-bold mb-6 text-slate-800">{step.title}</h3>
-                <p className="text-slate-600 leading-relaxed text-lg">{step.description}</p>
+                <h3 className="text-3xl font-bold mb-6 text-foreground">{step.title}</h3>
+                <p className="text-muted-foreground leading-relaxed text-lg">{step.description}</p>
               </div>
             </div>
           ))}

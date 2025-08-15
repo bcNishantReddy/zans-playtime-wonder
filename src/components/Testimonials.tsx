@@ -28,13 +28,13 @@ const Testimonials: React.FC = () => {
   ];
 
   return (
-    <section className="py-24 relative bg-gradient-to-br from-shiny-blue-50/30 via-white to-shiny-blue-50/30">
+    <section className="py-24 relative bg-gradient-to-br from-primary/5 via-background to-primary/5">
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-20 animate-fade-in">
-          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-shiny-blue-700 to-shiny-blue-500 bg-clip-text text-transparent">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 text-foreground">
             What Parents Say
           </h2>
-          <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
+          <p className="text-2xl text-muted-foreground max-w-3xl mx-auto font-medium">
             Hear from families who have made ZANS Storytelling Dice part of their daily routine
           </p>
         </div>
@@ -52,19 +52,19 @@ const Testimonials: React.FC = () => {
                 </div>
                 
                 {/* Quote */}
-                <blockquote className="text-slate-700 mb-8 text-center italic leading-relaxed text-lg font-medium">
+                <blockquote className="text-foreground mb-8 text-center italic leading-relaxed text-lg font-medium">
                   "{testimonial.text}"
                 </blockquote>
               </div>
               
               {/* Avatar and Info */}
               <div className="flex items-center justify-center">
-                <div className="bg-shiny-blue-100 rounded-full p-4 mr-4 text-shiny-blue-600 shadow-lg">
+                <div className="bg-primary/10 rounded-full p-4 mr-4 text-primary shadow-lg">
                   {testimonial.avatar}
                 </div>
                 <div className="text-left">
-                  <p className="font-bold text-slate-800 text-lg">{testimonial.name}</p>
-                  <p className="text-slate-600">{testimonial.role}</p>
+                  <p className="font-bold text-foreground text-lg">{testimonial.name}</p>
+                  <p className="text-muted-foreground">{testimonial.role}</p>
                 </div>
               </div>
             </div>
