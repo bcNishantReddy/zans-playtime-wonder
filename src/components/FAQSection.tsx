@@ -36,38 +36,32 @@ const FAQSection: React.FC = () => {
   ];
 
   return (
-    <section className="py-20 relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-gray-50/50 to-white/50"></div>
-      
+    <section className="py-24 relative bg-gradient-to-b from-white via-shiny-blue-50/20 to-white">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-gray-700 to-gray-900 bg-clip-text text-transparent">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-shiny-blue-700 to-shiny-blue-500 bg-clip-text text-transparent">
             Frequently Asked Questions
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
             Got questions? We've got answers!
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          {/* Glassmorphic Accordion Container */}
-          <div className="bg-white/40 backdrop-blur-lg border border-white/30 rounded-3xl p-6 shadow-xl">
-            <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem key={index} value={`item-${index}`} className="border-0">
-                  <div className="bg-white/50 backdrop-blur-sm border border-white/30 rounded-2xl overflow-hidden">
-                    <AccordionTrigger className="px-6 py-4 text-left hover:no-underline hover:bg-white/60 transition-colors">
-                      <span className="font-semibold text-gray-800">{faq.question}</span>
-                    </AccordionTrigger>
-                    <AccordionContent className="px-6 pb-4 text-gray-600 leading-relaxed">
-                      {faq.answer}
-                    </AccordionContent>
-                  </div>
-                </AccordionItem>
-              ))}
-            </Accordion>
-          </div>
+        <div className="max-w-4xl mx-auto animate-slide-up">
+          <Accordion type="single" collapsible className="space-y-6">
+            {faqs.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`} className="border-0" style={{animationDelay: `${index * 0.1}s`}}>
+                <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all overflow-hidden border border-shiny-blue-100">
+                  <AccordionTrigger className="px-8 py-6 text-left hover:no-underline hover:bg-shiny-blue-50/50 transition-colors">
+                    <span className="font-bold text-slate-800 text-lg">{faq.question}</span>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-8 pb-6 text-slate-600 leading-relaxed text-base">
+                    {faq.answer}
+                  </AccordionContent>
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
         </div>
       </div>
     </section>

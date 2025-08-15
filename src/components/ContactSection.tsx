@@ -9,81 +9,78 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-purple-50/50 via-pink-50/50 to-blue-50/50"></div>
-      
+    <section className="py-24 relative bg-gradient-to-br from-shiny-blue-50/30 via-white to-shiny-blue-50/30">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-shiny-blue-700 to-shiny-blue-500 bg-clip-text text-transparent">
             Get In Touch
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
             Have questions? We'd love to hear from you!
           </p>
         </div>
 
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
           {/* Contact Info */}
-          <div className="bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl p-8 shadow-xl">
-            <h3 className="text-2xl font-bold mb-6 text-gray-800">Contact Information</h3>
+          <div className="animate-slide-up">
+            <h3 className="text-3xl font-bold mb-10 text-slate-800">Contact Information</h3>
             
-            <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center">
-                  <MessageSquare className="h-6 w-6 text-green-600" />
+            <div className="space-y-8">
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-400 rounded-2xl flex items-center justify-center shadow-lg">
+                  <MessageSquare className="h-8 w-8 text-white" />
                 </div>
                 <div>
-                  <div className="font-medium text-gray-800">WhatsApp</div>
-                  <div className="text-gray-600">+91 7349045386</div>
+                  <div className="font-bold text-slate-800 text-lg">WhatsApp</div>
+                  <div className="text-slate-600 text-lg">+91 7349045386</div>
                 </div>
               </div>
               
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">
-                  <Mail className="h-6 w-6 text-blue-600" />
+              <div className="flex items-center gap-6">
+                <div className="w-16 h-16 bg-gradient-to-r from-shiny-blue-500 to-shiny-blue-400 rounded-2xl flex items-center justify-center shadow-lg">
+                  <Mail className="h-8 w-8 text-white" />
                 </div>
                 <div>
-                  <div className="font-medium text-gray-800">Email</div>
-                  <div className="text-gray-600">zansoffice@gmail.com</div>
+                  <div className="font-bold text-slate-800 text-lg">Email</div>
+                  <div className="text-slate-600 text-lg">zansoffice@gmail.com</div>
                 </div>
               </div>
             </div>
 
             {/* Social Links */}
-            <div className="mt-8">
-              <h4 className="font-medium mb-4 text-gray-800">Follow Us</h4>
+            <div className="mt-12">
+              <h4 className="font-bold mb-6 text-slate-800 text-xl">Follow Us</h4>
               <div className="flex gap-4">
-                <a href="#" className="w-10 h-10 bg-pink-500/20 rounded-full flex items-center justify-center hover:bg-pink-500/30 transition-colors">
-                  <Instagram className="h-5 w-5 text-pink-600" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-r from-pink-500 to-pink-400 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                  <Instagram className="h-7 w-7 text-white" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-blue-500/20 rounded-full flex items-center justify-center hover:bg-blue-500/30 transition-colors">
-                  <Facebook className="h-5 w-5 text-blue-600" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-400 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                  <Facebook className="h-7 w-7 text-white" />
                 </a>
-                <a href="#" className="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center hover:bg-red-500/30 transition-colors">
-                  <Youtube className="h-5 w-5 text-red-600" />
+                <a href="#" className="w-14 h-14 bg-gradient-to-r from-red-500 to-red-400 rounded-2xl flex items-center justify-center hover:scale-110 transition-transform shadow-lg">
+                  <Youtube className="h-7 w-7 text-white" />
                 </a>
               </div>
             </div>
           </div>
 
           {/* CTA Card */}
-          <div className="bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl p-8 shadow-xl flex flex-col justify-center">
-            <div className="text-center">
-              <div className="text-6xl mb-6">💬</div>
-              <h3 className="text-2xl font-bold mb-4 text-gray-800">Ready to Order?</h3>
-              <p className="text-gray-600 mb-8 leading-relaxed">
-                Get your ZANS Storytelling Dice today and start creating magical stories with your little ones!
-              </p>
-              
-              <Button 
-                className="w-full bg-green-500 hover:bg-green-600 text-white text-lg py-6 rounded-2xl shadow-lg transform hover:scale-105 transition-all flex items-center gap-3 justify-center"
-                onClick={handleWhatsAppClick}
-              >
-                <MessageSquare className="h-5 w-5" />
-                Start Chat on WhatsApp
-              </Button>
+          <div className="flex flex-col justify-center text-center animate-slide-up" style={{animationDelay: '0.2s'}}>
+            <div className="text-8xl mb-8 animate-float">
+              <MessageSquare className="h-20 w-20 text-shiny-blue-500 mx-auto" />
             </div>
+            <h3 className="text-3xl font-bold mb-6 text-slate-800">Ready to Order?</h3>
+            <p className="text-slate-600 mb-10 leading-relaxed text-xl">
+              Get your ZANS Storytelling Dice today and start creating magical stories with your little ones!
+            </p>
+            
+            <Button 
+              className="w-full bg-gradient-to-r from-green-500 to-green-400 hover:from-green-600 hover:to-green-500 text-white text-xl py-8 rounded-2xl shadow-2xl transform hover:scale-105 transition-all flex items-center gap-4 justify-center font-bold"
+              onClick={handleWhatsAppClick}
+            >
+              <MessageSquare className="h-7 w-7" />
+              Start Chat on WhatsApp
+            </Button>
           </div>
         </div>
       </div>

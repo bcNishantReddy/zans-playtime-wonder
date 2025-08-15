@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Dices, BookOpen, Sparkles } from "lucide-react";
 
 const HowItWorks: React.FC = () => {
   const steps = [
@@ -8,66 +9,63 @@ const HowItWorks: React.FC = () => {
       title: "Roll the Dice",
       description: "Simply roll our soft storytelling dice and see what magical images appear!",
       image: "/lovable-uploads/d4329b10-4f51-4095-8797-1facffe17405.png",
-      icon: "🎲"
+      icon: <Dices className="h-12 w-12" />
     },
     {
       number: "02", 
       title: "Create Your Story",
       description: "Use the images to spark imagination and create wonderful stories together!",
       image: "/lovable-uploads/4d86a8d1-7da7-4d57-b494-d93c29d442e4.png",
-      icon: "📖"
+      icon: <BookOpen className="h-12 w-12" />
     },
     {
       number: "03",
       title: "Spark Imagination",
       description: "Watch as creativity blooms and language skills develop through play!",
       image: "/lovable-uploads/351cc6b9-e617-4bcd-8988-f83cdb2b68de.png", 
-      icon: "✨"
+      icon: <Sparkles className="h-12 w-12" />
     }
   ];
 
   return (
-    <section className="py-20 relative">
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
-      
+    <section className="py-24 relative bg-gradient-to-b from-white via-shiny-blue-50/20 to-white">
       <div className="container mx-auto px-4 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+        <div className="text-center mb-20 animate-fade-in">
+          <h2 className="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-shiny-blue-700 to-shiny-blue-500 bg-clip-text text-transparent">
             How It Works
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-2xl text-slate-600 max-w-3xl mx-auto font-medium">
             Three simple steps to unlock endless creativity and learning
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-12 max-w-7xl mx-auto">
           {steps.map((step, index) => (
-            <div key={index} className="relative group">
-              {/* Glassmorphic Card */}
-              <div className="bg-white/30 backdrop-blur-lg border border-white/40 rounded-3xl p-8 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 h-full">
-                {/* Step Number */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg">
-                  {step.number}
-                </div>
-                
+            <div key={index} className="relative group animate-slide-up" style={{animationDelay: `${index * 0.2}s`}}>
+              {/* Step Number */}
+              <div className="absolute -top-6 -left-6 w-16 h-16 bg-gradient-to-r from-shiny-blue-600 to-shiny-blue-500 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-2xl z-10 group-hover:scale-110 transition-transform">
+                {step.number}
+              </div>
+              
+              {/* Content Container */}
+              <div className="relative pt-8 text-center group-hover:transform group-hover:scale-105 transition-all duration-500">
                 {/* Icon */}
-                <div className="text-5xl mb-6 text-center animate-float" style={{animationDelay: `${index * 0.5}s`}}>
+                <div className="text-shiny-blue-600 mb-8 flex justify-center animate-float" style={{animationDelay: `${index * 0.5}s`}}>
                   {step.icon}
                 </div>
                 
                 {/* Image */}
-                <div className="mb-6 rounded-2xl overflow-hidden">
+                <div className="mb-8 rounded-3xl overflow-hidden shadow-2xl group-hover:shadow-3xl transition-shadow">
                   <img 
                     src={step.image} 
                     alt={step.title}
-                    className="w-full h-48 object-contain bg-white/50 rounded-2xl p-4"
+                    className="w-full h-64 object-contain bg-white p-6 group-hover:scale-110 transition-transform duration-500"
                   />
                 </div>
                 
-                {/* Content */}
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">{step.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{step.description}</p>
+                {/* Text Content */}
+                <h3 className="text-3xl font-bold mb-6 text-slate-800">{step.title}</h3>
+                <p className="text-slate-600 leading-relaxed text-lg">{step.description}</p>
               </div>
             </div>
           ))}
