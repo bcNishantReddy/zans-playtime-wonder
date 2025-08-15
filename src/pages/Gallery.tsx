@@ -1,76 +1,57 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { Card } from "@/components/ui/card";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
-
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 const Gallery: React.FC = () => {
-  const galleryImages = [
-    {
-      src: "/lovable-uploads/d4329b10-4f51-4095-8797-1facffe17405.png",
-      alt: "Happy child creating stories with dice",
-      title: "Creative Storytelling Session",
-      description: "Children discovering the magic of storytelling"
-    },
-    {
-      src: "/lovable-uploads/4d86a8d1-7da7-4d57-b494-d93c29d442e4.png",
-      alt: "Family enjoying dice games together",
-      title: "Family Bonding Time",
-      description: "Parents and children sharing precious moments"
-    },
-    {
-      src: "/lovable-uploads/351cc6b9-e617-4bcd-8988-f83cdb2b68de.png",
-      alt: "Children playing and learning with story dice",
-      title: "Learning Through Play",
-      description: "Educational fun with storytelling dice"
-    },
-    {
-      src: "/lovable-uploads/a607f44f-90b6-4154-82d7-93b79e49bf8c.png",
-      alt: "Group of children sitting in circle playing with dice",
-      title: "Circle Time Stories",
-      description: "Community storytelling brings everyone together"
-    },
-    {
-      src: "/lovable-uploads/cf0eda08-ed5d-481d-a3b5-5d36e6a6f8c9.png",
-      alt: "Children with colorful dice outdoors",
-      title: "Outdoor Adventure Stories",
-      description: "Taking creativity outside with colorful dice"
-    },
-    {
-      src: "/lovable-uploads/391558f6-f85c-46cd-81e4-dfa4165eb793.png",
-      alt: "Young child with adult showing dice",
-      title: "One-on-One Learning",
-      description: "Personal attention helps build confidence"
-    },
-    {
-      src: "/lovable-uploads/b1b69221-a7ca-4d47-81b0-c42cfe16a551.png",
-      alt: "Large group of children playing with dice",
-      title: "Community Play Time",
-      description: "Bringing children together through storytelling"
-    },
-    {
-      src: "/lovable-uploads/d86a2abd-d9af-4255-b1d2-b5ab732fc8cc.png",
-      alt: "Children holding colorful story dice",
-      title: "Dice in Action",
-      description: "Each dice tells a different part of the story"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-accent/5">
+  const galleryImages = [{
+    src: "/lovable-uploads/d4329b10-4f51-4095-8797-1facffe17405.png",
+    alt: "Happy child creating stories with dice",
+    title: "Creative Storytelling Session",
+    description: "Children discovering the magic of storytelling"
+  }, {
+    src: "/lovable-uploads/4d86a8d1-7da7-4d57-b494-d93c29d442e4.png",
+    alt: "Family enjoying dice games together",
+    title: "Family Bonding Time",
+    description: "Parents and children sharing precious moments"
+  }, {
+    src: "/lovable-uploads/351cc6b9-e617-4bcd-8988-f83cdb2b68de.png",
+    alt: "Children playing and learning with story dice",
+    title: "Learning Through Play",
+    description: "Educational fun with storytelling dice"
+  }, {
+    src: "/lovable-uploads/a607f44f-90b6-4154-82d7-93b79e49bf8c.png",
+    alt: "Group of children sitting in circle playing with dice",
+    title: "Circle Time Stories",
+    description: "Community storytelling brings everyone together"
+  }, {
+    src: "/lovable-uploads/cf0eda08-ed5d-481d-a3b5-5d36e6a6f8c9.png",
+    alt: "Children with colorful dice outdoors",
+    title: "Outdoor Adventure Stories",
+    description: "Taking creativity outside with colorful dice"
+  }, {
+    src: "/lovable-uploads/391558f6-f85c-46cd-81e4-dfa4165eb793.png",
+    alt: "Young child with adult showing dice",
+    title: "One-on-One Learning",
+    description: "Personal attention helps build confidence"
+  }, {
+    src: "/lovable-uploads/b1b69221-a7ca-4d47-81b0-c42cfe16a551.png",
+    alt: "Large group of children playing with dice",
+    title: "Community Play Time",
+    description: "Bringing children together through storytelling"
+  }, {
+    src: "/lovable-uploads/d86a2abd-d9af-4255-b1d2-b5ab732fc8cc.png",
+    alt: "Children holding colorful story dice",
+    title: "Dice in Action",
+    description: "Each dice tells a different part of the story"
+  }];
+  return <div className="min-h-screen bg-gradient-to-br from-background via-muted/10 to-accent/5">
       <Navbar />
       
       {/* Hero Section */}
       <section className="py-8 md:py-16 bg-gradient-to-r from-primary to-accent">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 font-heading">
+          <h1 className="text-3xl font-bold text-white mb-4 font-heading px-0 py-[34px] md:text-6xl">
             Kids & Stories Gallery
           </h1>
           <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto font-medium">
@@ -93,23 +74,17 @@ const Gallery: React.FC = () => {
           
           <Carousel className="w-full max-w-6xl mx-auto">
             <CarouselContent className="-ml-2 md:-ml-4">
-              {galleryImages.slice(0, 4).map((image, index) => (
-                <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2">
+              {galleryImages.slice(0, 4).map((image, index) => <CarouselItem key={index} className="pl-2 md:pl-4 md:basis-1/2">
                   <Card className="overflow-hidden shadow-xl rounded-xl transform hover:scale-105 transition-all duration-300 border-0 h-full glass-card">
                     <div className="relative">
-                      <img 
-                        src={image.src} 
-                        alt={image.alt} 
-                        className="w-full h-64 md:h-80 object-cover"
-                      />
+                      <img src={image.src} alt={image.alt} className="w-full h-64 md:h-80 object-cover" />
                     </div>
                     <div className="p-4 bg-white/80 backdrop-blur-sm">
                       <h3 className="font-bold text-lg text-slate-800 mb-2 font-heading">{image.title}</h3>
                       <p className="text-slate-600 text-sm font-medium">"{image.description}"</p>
                     </div>
                   </Card>
-                </CarouselItem>
-              ))}
+                </CarouselItem>)}
             </CarouselContent>
             <CarouselPrevious className="hidden md:flex -left-12 glass-card" />
             <CarouselNext className="hidden md:flex -right-12 glass-card" />
@@ -130,22 +105,16 @@ const Gallery: React.FC = () => {
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6">
-            {galleryImages.map((image, index) => (
-              <Card key={index} className="overflow-hidden shadow-lg rounded-xl transform hover:scale-105 transition-all duration-300 border-0 group glass-card">
+            {galleryImages.map((image, index) => <Card key={index} className="overflow-hidden shadow-lg rounded-xl transform hover:scale-105 transition-all duration-300 border-0 group glass-card">
                 <div className="relative">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
-                    className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
+                  <img src={image.src} alt={image.alt} className="w-full h-48 sm:h-56 md:h-64 object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                     <h3 className="font-bold text-sm md:text-base mb-1 font-heading">{image.title}</h3>
                     <p className="text-xs md:text-sm text-gray-200 font-medium">{image.description}</p>
                   </div>
                 </div>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </section>
@@ -159,18 +128,13 @@ const Gallery: React.FC = () => {
           <p className="text-lg text-white/90 mb-6 max-w-2xl mx-auto font-medium">
             Join thousands of happy families who have discovered the joy of storytelling with our dice!
           </p>
-          <button 
-            onClick={() => window.open('https://wa.me/917349045386', '_blank')}
-            className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transform hover:scale-105 transition-all shadow-lg"
-          >
+          <button onClick={() => window.open('https://wa.me/917349045386', '_blank')} className="bg-white text-primary hover:bg-gray-100 font-bold py-3 px-8 rounded-full text-lg transform hover:scale-105 transition-all shadow-lg">
             Order Your Set Today!
           </button>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Gallery;
